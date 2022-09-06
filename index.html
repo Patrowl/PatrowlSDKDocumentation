@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>PatrowlDashboard API v1</title>
+
+  <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" media="screen" rel="stylesheet">
+  <link href="slate/css/print.css" media="print" rel="stylesheet">
+  <link href="slate/css/screen.css" media="screen" rel="stylesheet">
+  <script src="slate/js/lib/jquery.min.js"></script>
+  <script src="slate/js/lib/jquery.highlight.js"></script>
+  <script src="slate/js/lib/energize.js"></script>
+  <script src="slate/js/lib/imagesloaded.min.js"></script>
+  <script src="slate/js/lib/lunr.min.js"></script>
+  <script src="slate/js/app/lang.js"></script>
+  <script src="slate/js/app/toc.js"></script>
+
+  <script src="slate/js/app/search.js"></script>
+
+
+  <script type="text/javascript">
+    function adjustLanguageSelectorWidth () {
+      const elem = $('.dark-box > .lang-selector');
+      elem.width(elem.parent().width());
+    }
+    $(function () {
+      loadToc($('#toc'), '.toc-link', '.toc-list-h2, .toc-list-h3, .toc-list-h4, .toc-list-h5, .toc-list-h6', 10);
+      setupLanguages($('body').data('languages'));
+      $('.content').imagesLoaded(function () {
+        recacheHeights();
+        refreshToc();
+      });
+      $(window).resize(function () {
+        adjustLanguageSelectorWidth();
+      });
+      adjustLanguageSelectorWidth();
+    });
+    window.onpopstate = function () {
+      activateLanguage(getLanguageFromQueryString());
+    };
+  </script>
+  <!-- slate; content for the head element from source/includes/head.ejs -->
+  <meta name="theme-color" content="#F3F7F9">
+
+</head>
+
+<body data-languages="[&quot;python&quot;,&quot;javascript&quot;]">
+  <a href="#" id="nav-button">
+    <span>
+      NAV
+      <img src="slate/img/navbar.png" alt="Navigation">
+    </span>
+  </a>
+  <div class="toc-wrapper">
+    <img src="slate/img/logo.png" alt="Logo" class="logo">
+
+    <div class="lang-selector">
+
+
+      <a href="#" data-language-name="python">Python</a>
+
+
+
+      <a href="#" data-language-name="javascript">Javascript</a>
+
+
+    </div>
+
+
+    <div class="search">
+      <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+
+
+
+    <div id="toc" class="toc-list-h1">
+      <ul class="toc-list-h1">
+
+        <li>
+          <a href="#patrowldashboard-api" class="toc-h1 toc-link" data-title="PatrowlDashboard API v1">PatrowlDashboard
+            API v1</a>
+
+        </li>
+
+        <li>
+          <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+
+        </li>
+
+        <li>
+          <a href="#patrowldashboard-api-assets" class="toc-h1 toc-link" data-title="assets">assets</a>
+
+          <ul class="toc-list-h2">
+
+            <li>
+              <a href="#assets_list" class="toc-h2 toc-link" data-title="">assets_list</a>
+
+            </li>
+
+            <li>
+              <a href="#assets_read" class="toc-h2 toc-link" data-title="">assets_read</a>
+
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="#patrowldashboard-api-retests" class="toc-h1 toc-link" data-title="retests">retests</a>
+
+          <ul class="toc-list-h2">
+
+            <li>
+              <a href="#retests_list" class="toc-h2 toc-link" data-title="">retests_list</a>
+
+            </li>
+
+            <li>
+              <a href="#retests_read" class="toc-h2 toc-link" data-title="">retests_read</a>
+
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="#patrowldashboard-api-vulns" class="toc-h1 toc-link" data-title="vulns">vulns</a>
+
+          <ul class="toc-list-h2">
+
+            <li>
+              <a href="#vulns_list" class="toc-h2 toc-link" data-title="">vulns_list</a>
+
+            </li>
+
+            <li>
+              <a href="#vulns_read" class="toc-h2 toc-link" data-title="">vulns_read</a>
+
+            </li>
+
+            <li>
+              <a href="#vulns_list_retests" class="toc-h2 toc-link" data-title="">vulns_list_retests</a>
+
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li>
+          <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+
+          <ul class="toc-list-h2">
+
+            <li>
+              <a href="#tocS_Asset" class="toc-h2 toc-link" data-title="">Asset</a>
+
+            </li>
+
+            <li>
+              <a href="#tocS_Vulnerability" class="toc-h2 toc-link" data-title="">Vulnerability</a>
+
+            </li>
+
+            <li>
+              <a href="#tocS_Retest" class="toc-h2 toc-link" data-title="">Retest</a>
+
+            </li>
+
+          </ul>
+
+        </li>
+
+      </ul>
+    </div>
+
+    <ul class="toc-footer">
+
+    </ul>
+
+  </div>
+  <div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+      <!-- Generator: Widdershins v4.0.1 -->
+      <h1 id="patrowldashboard-api">PatrowlDashboard API v1</h1>
+      <blockquote>
+        <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the
+          tabs above or the mobile navigation menu.</p>
+      </blockquote>
+      <p>API usage for Patrowl Dashboard</p>
+      <p>Base URLs:</p>
+      <ul>
+        <li><a href="http://patrowldashboard/api/auth">http://patrowldashboard/api/auth</a></li>
+      </ul>
+      <p>Email: <a href="mailto:help@patrowl.io">Support</a>
+        License: EULA License</p>
+      <h1 id="authentication">Authentication</h1>
+      <ul>
+        <li>HTTP Authentication. Generate your API Key in your account settings (<a
+            href="https://patrowldashboard/account">https://patrowldashboard/account</a>).</li>
+        <li>Your key has to be sent in every requests, in Authorization header with value “Token YOUR_KEY”</li>
+      </ul>
+      <h1 id="patrowldashboard-api-assets">assets</h1>
+      <h2 id="assets_list">assets_list</h2>
+      <p><a id="opIdassets_list"></a></p>
+      <blockquote>
+        <p>Code samples</p>
+      </blockquote>
+      <pre
+        class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token punctuation">:</span> <span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><br><br>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/assets/'</span><span class="token punctuation">,</span> headers <span class="token operator">=</span> headers<span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+      <pre
+        class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/assets/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+      <p><code>GET /assets/</code></p>
+      <p>List all assets</p>
+      <h3 id="assets_list-parameters">Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>In</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>type</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Filter by asset types (web, domain…)</td>
+          </tr>
+          <tr>
+            <td>type__icontains</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>criticality</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Filter by exact criticality</td>
+          </tr>
+          <tr>
+            <td>description__icontains</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Filter exact title</td>
+          </tr>
+          <tr>
+            <td>value__icontains</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>score</td>
+            <td>query</td>
+            <td>number</td>
+            <td>false</td>
+            <td>Filter by exact score</td>
+          </tr>
+          <tr>
+            <td>score__lte</td>
+            <td>query</td>
+            <td>number</td>
+            <td>false</td>
+            <td>Filter by score &lt;. ex: 30 will filter all asset with a score lower or equal 30</td>
+          </tr>
+          <tr>
+            <td>score__gte</td>
+            <td>query</td>
+            <td>number</td>
+            <td>false</td>
+            <td>Filter by score &gt;. ex: 30 will filter all asset with a score greater or equal 30</td>
+          </tr>
+          <tr>
+            <td>search</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Search query. Search in asset title</td>
+          </tr>
+          <tr>
+            <td>org_id</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Organization to get asset from</td>
+          </tr>
+          <tr>
+            <td>is_monitored</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Filter by monitored asset</td>
+          </tr>
+          <tr>
+            <td>tags_value</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>tags_value_union</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>tags_or</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>sorted_by</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>page</td>
+            <td>query</td>
+            <td>integer</td>
+            <td>false</td>
+            <td>A page number within the paginated result set.</td>
+          </tr>
+          <tr>
+            <td>limit</td>
+            <td>query</td>
+            <td>integer</td>
+            <td>false</td>
+            <td>Number of results to return per page.</td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <p>Example responses</p>
+      </blockquote>
+      <blockquote>
+        <p>200 Response</p>
+      </blockquote>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"count"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"next"</span><span class="token operator">:</span> <span class="token string">"url-to-next-page"</span><span class="token punctuation">,</span><br>  <span class="token property">"previous"</span><span class="token operator">:</span> <span class="token string">"url-to-previous-page"</span><span class="token punctuation">,</span><br>  <span class="token property">"results"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"criticality"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"ip"</span><span class="token punctuation">,</span><br>      <span class="token property">"is_active"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>      <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"exposure"</span><span class="token operator">:</span> <span class="token string">"unknown"</span><span class="token punctuation">,</span><br>      <span class="token property">"activevulns"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"is_monitored"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>      <span class="token property">"score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>      <span class="token property">"rating"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>      <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>      <span class="token property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token punctuation">{</span><br>          <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>          <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>          <span class="token property">"organization"</span><span class="token operator">:</span> <span class="token number">0</span><br>        <span class="token punctuation">}</span><br>      <span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+      <h3 id="assets_list-responses">Responses</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Meaning</th>
+            <th>Description</th>
+            <th>Schema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>200</td>
+            <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+            <td>none</td>
+            <td>Inline</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id="assets_list-responseschema">Response Schema</h3>
+      <p>Status Code <strong>200</strong></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>» count</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>» next</td>
+            <td>string(uri)¦null</td>
+          </tr>
+          <tr>
+            <td>» previous</td>
+            <td>string(uri)¦null</td>
+          </tr>
+          <tr>
+            <td>» results</td>
+            <td>[<a href="#schemaasset">Asset</a>]</td>
+          </tr>
+          <tr>
+            <td>»» id</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>»» value</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>»» criticality</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>»» type</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>»» is_active</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>»» description</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>»» exposure</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>»» activevulns</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>»» is_monitored</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>»» score</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>»» rating</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>»» created_at</td>
+            <td>string(date-time)¦null</td>
+          </tr>
+          <tr>
+            <td>»» updated_at</td>
+            <td>string(date-time)¦null</td>
+          </tr>
+          <tr>
+            <td>»» tags</td>
+            <td>[<a href="#schemaassettag">AssetTag</a>]</td>
+          </tr>
+          <tr>
+            <td>»»» id</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>»»» value</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>»»» organization</td>
+            <td>integer</td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="warning">
+        To perform this operation, you must be authenticated by means of one of the following methods:
+        ApiKey
+      </aside>
+      <h2 id="assets_read">assets_read</h2>
+      <p><a id="opIdassets_read"></a></p>
+      <blockquote>
+        <p>Code samples</p>
+      </blockquote>
+      <pre
+        class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token punctuation">:</span> <span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><br><br>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/assets/{id}/'</span><span class="token punctuation">,</span> headers <span class="token operator">=</span> headers<span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+      <pre
+        class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/assets/{id}/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+      <p><code>GET /assets/{id}/</code></p>
+      <p>Get single Asset</p>
+      <h3 id="assets_read-parameters">Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>In</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>path</td>
+            <td>string</td>
+            <td>true</td>
+            <td>none</td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <p>Example responses</p>
+      </blockquote>
+      <blockquote>
+        <p>200 Response</p>
+      </blockquote>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"criticality"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"ip"</span><span class="token punctuation">,</span><br>  <span class="token property">"is_active"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"exposure"</span><span class="token operator">:</span> <span class="token string">"unknown"</span><span class="token punctuation">,</span><br>  <span class="token property">"activevulns"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"is_monitored"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token property">"score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"rating"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"organization"</span><span class="token operator">:</span> <span class="token number">0</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+      <h3 id="assets_read-responses">Responses</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Meaning</th>
+            <th>Description</th>
+            <th>Schema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>200</td>
+            <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+            <td>none</td>
+            <td><a href="#schemaasset">Asset</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="warning">
+        To perform this operation, you must be authenticated by means of one of the following methods:
+        ApiKey
+      </aside>
+      <h1 id="patrowldashboard-api-retests">retests</h1>
+      <h2 id="retests_list">retests_list</h2>
+      <p><a id="opIdretests_list"></a></p>
+      <blockquote>
+        <p>Code samples</p>
+      </blockquote>
+      <pre
+        class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token punctuation">:</span> <span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><br><br>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/retests/'</span><span class="token punctuation">,</span> headers <span class="token operator">=</span> headers<span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+      <pre
+        class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/retests/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+      <p><code>GET /retests/</code></p>
+      <p>List all retests</p>
+      <h3 id="retests_list-parameters">Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>In</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>status</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Filter by retest status</td>
+          </tr>
+          <tr>
+            <td>sorted_by</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Sort by parameters. Ex: ‘-created_at’</td>
+          </tr>
+          <tr>
+            <td>page</td>
+            <td>query</td>
+            <td>integer</td>
+            <td>false</td>
+            <td>A page number within the paginated result set.</td>
+          </tr>
+          <tr>
+            <td>limit</td>
+            <td>query</td>
+            <td>integer</td>
+            <td>false</td>
+            <td>Number of results to return per page.</td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <p>Example responses</p>
+      </blockquote>
+      <blockquote>
+        <p>200 Response</p>
+      </blockquote>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"count"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"next"</span><span class="token operator">:</span> <span class="token string">"url-to-next-page"</span><span class="token punctuation">,</span><br>  <span class="token property">"previous"</span><span class="token operator">:</span> <span class="token string">"url-to-previous-page"</span><span class="token punctuation">,</span><br>  <span class="token property">"results"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"arsenal_id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>      <span class="token property">"vulnerability"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span><br>      <span class="token property">"comments"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"requested_by"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>      <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+      <h3 id="retests_list-responses">Responses</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Meaning</th>
+            <th>Description</th>
+            <th>Schema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>200</td>
+            <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+            <td>none</td>
+            <td>Inline</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id="retests_list-responseschema">Response Schema</h3>
+      <p>Status Code <strong>200</strong></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>» count</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>» next</td>
+            <td>string(uri)¦null</td>
+          </tr>
+          <tr>
+            <td>» previous</td>
+            <td>string(uri)¦null</td>
+          </tr>
+          <tr>
+            <td>» results</td>
+            <td>[<a href="#schemaretest">Retest</a>]</td>
+          </tr>
+          <tr>
+            <td>»» id</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>»» arsenal_id</td>
+            <td>integer¦null</td>
+          </tr>
+          <tr>
+            <td>»» vulnerability</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>»» status</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>»» comments</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>»» requested_by</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>»» created_at</td>
+            <td>string(date-time)</td>
+          </tr>
+          <tr>
+            <td>»» updated_at</td>
+            <td>string(date-time)</td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="warning">
+        To perform this operation, you must be authenticated by means of one of the following methods:
+        ApiKey
+      </aside>
+      <h2 id="retests_read">retests_read</h2>
+      <p><a id="opIdretests_read"></a></p>
+      <blockquote>
+        <p>Code samples</p>
+      </blockquote>
+      <pre
+        class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token punctuation">:</span> <span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><br><br>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/retests/{id}/'</span><span class="token punctuation">,</span> headers <span class="token operator">=</span> headers<span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+      <pre
+        class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/retests/{id}/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+      <p><code>GET /retests/{id}/</code></p>
+      <p>Get a single retest</p>
+      <h3 id="retests_read-parameters">Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>In</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>path</td>
+            <td>string</td>
+            <td>true</td>
+            <td>ID of the retest to get</td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <p>Example responses</p>
+      </blockquote>
+      <blockquote>
+        <p>200 Response</p>
+      </blockquote>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"arsenal_id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"vulnerability"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span><br>  <span class="token property">"comments"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"requested_by"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><br><span class="token punctuation">}</span></code></pre>
+      <h3 id="retests_read-responses">Responses</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Meaning</th>
+            <th>Description</th>
+            <th>Schema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>200</td>
+            <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+            <td>none</td>
+            <td><a href="#schemaretest">Retest</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="warning">
+        To perform this operation, you must be authenticated by means of one of the following methods:
+        ApiKey
+      </aside>
+      <h1 id="patrowldashboard-api-vulns">vulns</h1>
+      <h2 id="vulns_list">vulns_list</h2>
+      <p><a id="opIdvulns_list"></a></p>
+      <blockquote>
+        <p>Code samples</p>
+      </blockquote>
+      <pre
+        class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token punctuation">:</span> <span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><br><br>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/vulns/'</span><span class="token punctuation">,</span> headers <span class="token operator">=</span> headers<span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+      <pre
+        class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/vulns/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+      <p><code>GET /vulns/</code></p>
+      <p>List Vulnerabilities</p>
+      <h3 id="vulns_list-parameters">Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>In</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>status</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Filter by status. ex: “1”, or “2,3”</td>
+          </tr>
+          <tr>
+            <td>search</td>
+            <td>query</td>
+            <td>string</td>
+            <td>false</td>
+            <td>Search query. Will search in matching titles</td>
+          </tr>
+          <tr>
+            <td>page</td>
+            <td>query</td>
+            <td>integer</td>
+            <td>false</td>
+            <td>A page number within the paginated result set.</td>
+          </tr>
+          <tr>
+            <td>limit</td>
+            <td>query</td>
+            <td>integer</td>
+            <td>false</td>
+            <td>Number of results to return per page.</td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <p>Example responses</p>
+      </blockquote>
+      <blockquote>
+        <p>200 Response</p>
+      </blockquote>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">[</span><span class="token punctuation">{</span><br>  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"arsenal_id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"asset"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"organization"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"asset_value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"severity"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"cvss_vector"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"new"</span><span class="token punctuation">,</span><br>  <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"description_html"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"source"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"external_id"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"category"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"last_ticket"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_headline"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_html"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_priority"</span><span class="token operator">:</span> <span class="token string">"urgent"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_effort"</span><span class="token operator">:</span> <span class="token string">"low"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_gain"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_owner"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_duedate"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"is_quickwin"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token property">"comments"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"found_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"last_checked_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"reteststatus"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span><br>  <span class="token property">"ticketstatus"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"is_retestable"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"attachments"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"extension"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span><span class="token punctuation">]</span></code></pre>
+      <h3 id="vulns_list-responses">Responses</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Meaning</th>
+            <th>Description</th>
+            <th>Schema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>200</td>
+            <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+            <td>none</td>
+            <td><a href="#schemavulnerability">Vulnerability</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="warning">
+        To perform this operation, you must be authenticated by means of one of the following methods:
+        ApiKey
+      </aside>
+      <h2 id="vulns_read">vulns_read</h2>
+      <p><a id="opIdvulns_read"></a></p>
+      <blockquote>
+        <p>Code samples</p>
+      </blockquote>
+      <pre
+        class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token punctuation">:</span> <span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><br><br>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/vulns/{id}/'</span><span class="token punctuation">,</span> headers <span class="token operator">=</span> headers<span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+      <pre
+        class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/vulns/{id}/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+      <p><code>GET /vulns/{id}/</code></p>
+      <p>Get Vulnerability</p>
+      <h3 id="vulns_read-parameters">Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>In</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>path</td>
+            <td>string</td>
+            <td>true</td>
+            <td>ID of the vulnerability to get</td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <p>Example responses</p>
+      </blockquote>
+      <blockquote>
+        <p>200 Response</p>
+      </blockquote>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"arsenal_id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"asset"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"organization"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"asset_value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"severity"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"cvss_vector"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"new"</span><span class="token punctuation">,</span><br>  <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"description_html"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"source"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"external_id"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"category"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"last_ticket"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_headline"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_html"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_priority"</span><span class="token operator">:</span> <span class="token string">"urgent"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_effort"</span><span class="token operator">:</span> <span class="token string">"low"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_gain"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_owner"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_duedate"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"is_quickwin"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token property">"comments"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"found_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"last_checked_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"reteststatus"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span><br>  <span class="token property">"ticketstatus"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"is_retestable"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"attachments"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"extension"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+      <h3 id="vulns_read-responses">Responses</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Meaning</th>
+            <th>Description</th>
+            <th>Schema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>200</td>
+            <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+            <td>none</td>
+            <td><a href="#schemavulnerability">Vulnerability</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="warning">
+        To perform this operation, you must be authenticated by means of one of the following methods:
+        ApiKey
+      </aside>
+      <h2 id="vulns_list_retests">vulns_list_retests</h2>
+      <p><a id="opIdvulns_list_retests"></a></p>
+      <blockquote>
+        <p>Code samples</p>
+      </blockquote>
+      <pre
+        class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token punctuation">:</span> <span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><br><br>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/vulns/{id}/retests'</span><span class="token punctuation">,</span> headers <span class="token operator">=</span> headers<span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+      <pre
+        class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'http://patrowldashboard/api/auth/vulns/{id}/retests'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+      <p><code>GET /vulns/{id}/retests</code></p>
+      <p>List related retests.</p>
+      <h3 id="vulns_list_retests-parameters">Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>In</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>page</td>
+            <td>query</td>
+            <td>integer</td>
+            <td>false</td>
+            <td>A page number within the paginated result set.</td>
+          </tr>
+          <tr>
+            <td>limit</td>
+            <td>query</td>
+            <td>integer</td>
+            <td>false</td>
+            <td>Number of results to return per page.</td>
+          </tr>
+        </tbody>
+      </table>
+      <blockquote>
+        <p>Example responses</p>
+      </blockquote>
+      <blockquote>
+        <p>200 Response</p>
+      </blockquote>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"count"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"next"</span><span class="token operator">:</span> <span class="token string">"url-to-next-page"</span><span class="token punctuation">,</span><br>  <span class="token property">"previous"</span><span class="token operator">:</span> <span class="token string">"url-to-previous-page"</span><span class="token punctuation">,</span><br>  <span class="token property">"results"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"id"</span><span class="token operator">:</span>	<span class="token number">1</span><span class="token punctuation">,</span><br>      <span class="token property">"arsenal_id"</span><span class="token operator">:</span>	<span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"vulnerability"</span><span class="token operator">:</span>	<span class="token number">2</span><span class="token punctuation">,</span><br>      <span class="token property">"status"</span><span class="token operator">:</span>	<span class="token string">"done-not-fixed"</span><span class="token punctuation">,</span><br>      <span class="token property">"comments"</span>	<span class="token operator">:</span><span class="token string">""</span><span class="token punctuation">,</span><br>      <span class="token property">"requested_by"</span><span class="token operator">:</span>	<span class="token string">"username"</span><span class="token punctuation">,</span><br>      <span class="token property">"created_at"</span><span class="token operator">:</span>	<span class="token string">"2022-08-30T09:22:46.484115Z"</span><span class="token punctuation">,</span><br>      <span class="token property">"updated_at"</span><span class="token operator">:</span>	<span class="token string">"2022-08-30T12:30:00.458347Z"</span><span class="token punctuation">,</span><br>      <span class="token property">"is_auto"</span><span class="token operator">:</span>	<span class="token boolean">true</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+      <h3 id="vulns_list_retests-responses">Responses</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Meaning</th>
+            <th>Description</th>
+            <th>Schema</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>200</td>
+            <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+            <td>none</td>
+            <td>Inline</td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="warning">
+        To perform this operation, you must be authenticated by means of one of the following methods:
+        ApiKey
+      </aside>
+      <h1 id="schemas">Schemas</h1>
+      <h2 id="tocS_Asset">Asset</h2>
+      <!-- backwards compatibility -->
+      <a id="schemaasset"></a>
+      <a id="schema_Asset"></a>
+      <a id="tocSasset"></a>
+      <a id="tocsasset"></a>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"criticality"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"ip"</span><span class="token punctuation">,</span><br>  <span class="token property">"is_active"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"exposure"</span><span class="token operator">:</span> <span class="token string">"unknown"</span><span class="token punctuation">,</span><br>  <span class="token property">"activevulns"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"is_monitored"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token property">"score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"rating"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"organization"</span><span class="token operator">:</span> <span class="token number">0</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span><br></code></pre>
+      <h3 id="properties">Properties</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>criticality</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>is_active</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>exposure</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>activevulns</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>is_monitored</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>score</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>rating</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>created_at</td>
+            <td>string(date-time)¦null</td>
+          </tr>
+          <tr>
+            <td>updated_at</td>
+            <td>string(date-time)¦null</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            <td>[<a href="#schemaassettag">AssetTag</a>]</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 id="tocS_Vulnerability">Vulnerability</h2>
+      <!-- backwards compatibility -->
+      <a id="schemavulnerability"></a>
+      <a id="schema_Vulnerability"></a>
+      <a id="tocSvulnerability"></a>
+      <a id="tocsvulnerability"></a>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"arsenal_id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"asset"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"organization"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"asset_value"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"severity"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"cvss_vector"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"new"</span><span class="token punctuation">,</span><br>  <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"description_html"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"source"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"external_id"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"category"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"last_ticket"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_headline"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_html"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_priority"</span><span class="token operator">:</span> <span class="token string">"urgent"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_effort"</span><span class="token operator">:</span> <span class="token string">"low"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_gain"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_owner"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"solution_duedate"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"is_quickwin"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><br>  <span class="token property">"comments"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"found_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"last_checked_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"reteststatus"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span><br>  <span class="token property">"ticketstatus"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"is_retestable"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"attachments"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>      <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"extension"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span><br></code></pre>
+      <h3 id="properties-1">Properties</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>arsenal_id</td>
+            <td>integer¦null</td>
+          </tr>
+          <tr>
+            <td>asset</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>organization</td>
+            <td>integer¦null</td>
+          </tr>
+          <tr>
+            <td>asset_value</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>severity</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>cvss_vector</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>title</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>description_html</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>source</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>external_id</td>
+            <td>object¦null</td>
+          </tr>
+          <tr>
+            <td>category</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>last_ticket</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>solution_headline</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>solution</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>solution_html</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>solution_priority</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>solution_effort</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>solution_gain</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>solution_owner</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>solution_duedate</td>
+            <td>string(date-time)¦null</td>
+          </tr>
+          <tr>
+            <td>is_quickwin</td>
+            <td>boolean</td>
+          </tr>
+          <tr>
+            <td>comments</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>found_at</td>
+            <td>string(date-time)¦null</td>
+          </tr>
+          <tr>
+            <td>last_checked_at</td>
+            <td>string(date-time)¦null</td>
+          </tr>
+          <tr>
+            <td>created_at</td>
+            <td>string(date-time)</td>
+          </tr>
+          <tr>
+            <td>updated_at</td>
+            <td>string(date-time)</td>
+          </tr>
+          <tr>
+            <td>reteststatus</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>ticketstatus</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>is_retestable</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>attachments</td>
+            <td>[<a href="#schemavulnerabilityattachment">VulnerabilityAttachment</a>]</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 id="enumerated-values">Enumerated Values</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>severity</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>severity</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>severity</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>severity</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>severity</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>new</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>ack</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>assigned</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>patched</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>closed</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>closed-benign</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>closed-fp</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>closed-duplicate</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>closed-workaround</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>closed-risk-acceptance</td>
+          </tr>
+          <tr>
+            <td>solution_priority</td>
+            <td>urgent</td>
+          </tr>
+          <tr>
+            <td>solution_priority</td>
+            <td>moderate</td>
+          </tr>
+          <tr>
+            <td>solution_priority</td>
+            <td>hardening</td>
+          </tr>
+          <tr>
+            <td>solution_effort</td>
+            <td>low</td>
+          </tr>
+          <tr>
+            <td>solution_effort</td>
+            <td>medium</td>
+          </tr>
+          <tr>
+            <td>solution_effort</td>
+            <td>high</td>
+          </tr>
+          <tr>
+            <td>reteststatus</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>reteststatus</td>
+            <td>pending</td>
+          </tr>
+          <tr>
+            <td>reteststatus</td>
+            <td>in-progress</td>
+          </tr>
+          <tr>
+            <td>reteststatus</td>
+            <td>done-fixed</td>
+          </tr>
+          <tr>
+            <td>reteststatus</td>
+            <td>done-not-fixed</td>
+          </tr>
+          <tr>
+            <td>reteststatus</td>
+            <td>error</td>
+          </tr>
+          <tr>
+            <td>reteststatus</td>
+            <td>canceled</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 id="tocS_Retest">Retest</h2>
+      <!-- backwards compatibility -->
+      <a id="schemaretest"></a>
+      <a id="schema_Retest"></a>
+      <a id="tocSretest"></a>
+      <a id="tocsretest"></a>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"arsenal_id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span><br>  <span class="token property">"vulnerability"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span><br>  <span class="token property">"comments"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"requested_by"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><br><span class="token punctuation">}</span><br></code></pre>
+      <h3 id="properties-2">Properties</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>id</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>arsenal_id</td>
+            <td>integer¦null</td>
+          </tr>
+          <tr>
+            <td>vulnerability</td>
+            <td>integer</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>string</td>
+          </tr>
+          <tr>
+            <td>comments</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>requested_by</td>
+            <td>string¦null</td>
+          </tr>
+          <tr>
+            <td>created_at</td>
+            <td>string(date-time)</td>
+          </tr>
+          <tr>
+            <td>updated_at</td>
+            <td>string(date-time)</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 id="enumerated-values-1">Enumerated Values</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>status</td>
+            <td>none</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>pending</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>in-progress</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>done-fixed</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>done-not-fixed</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>error</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            <td>canceled</td>
+          </tr>
+        </tbody>
+      </table>
+      <pre
+        class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"identifier"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>  <span class="token property">"status_name"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"link"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"last_checked_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"created_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><span class="token punctuation">,</span><br>  <span class="token property">"updated_at"</span><span class="token operator">:</span> <span class="token string">"2019-08-24T14:15:22Z"</span><br><span class="token punctuation">}</span><br></code></pre>
+
+    </div>
+    <div class="dark-box">
+
+      <div class="lang-selector">
+
+
+        <a href="#" data-language-name="python">Python</a>
+
+
+
+        <a href="#" data-language-name="javascript">Javascript</a>
+
+
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
