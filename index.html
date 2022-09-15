@@ -24,6 +24,7 @@
   <script type="text/javascript">
     function adjustLanguageSelectorWidth () {
       const elem = $('.dark-box > .lang-selector');
+      
       elem.width(elem.parent().width());
     }
     $(function () {
@@ -93,7 +94,7 @@
         </li>
 
         <li>
-          <a href="#patrowldashboard-api-assets" class="toc-h1 toc-link" data-title="assets">assets</a>
+          <a href="#patrowldashboard-api-assets" class="toc-h1 toc-link" data-title="assets">Assets</a>
 
           <ul class="toc-list-h2">
 
@@ -112,7 +113,7 @@
         </li>
 
         <li>
-          <a href="#patrowldashboard-api-retests" class="toc-h1 toc-link" data-title="retests">retests</a>
+          <a href="#patrowldashboard-api-retests" class="toc-h1 toc-link" data-title="retests">Retests</a>
 
           <ul class="toc-list-h2">
 
@@ -131,7 +132,7 @@
         </li>
 
         <li>
-          <a href="#patrowldashboard-api-vulns" class="toc-h1 toc-link" data-title="vulns">vulns</a>
+          <a href="#patrowldashboard-api-vulns" class="toc-h1 toc-link" data-title="vulns">Vulnerabilities</a>
 
           <ul class="toc-list-h2">
 
@@ -196,19 +197,30 @@
           tabs above or the mobile navigation menu.</p>
       </blockquote>
       <p>API usage for Patrowl Dashboard</p>
-      <p>Base URLs:</p>
       <ul>
-        <li><a href="https://dashboard.cloud.patrowl.io/api/auth">https://dashboard.cloud.patrowl.io/api/auth</a></li>
+        <li>API Base URL: <a href="https://dashboard.cloud.patrowl.io/api/auth">https://dashboard.cloud.patrowl.io/api/auth</a></li>
+        <li>Email: <a href="mailto:help@patrowl.io">help@patrowl.io</a></li>
+        <li>License: EULA License</li>
       </ul>
-      <p>Email: <a href="mailto:help@patrowl.io">Support</a>
-        License: EULA License</p>
+      <h3>What can I do with this API ?</h3>
+      <p>You can use this Patrowl Dashboard API to:</p>
+      <ul>
+        <li><a href="#assets_list">List your assets</a> and <a href="#assets_read">retrieve the details</a>,</li>
+        <li><a href="#vulns_list">List your vulnerabilities</a> and <a href="#vulns_read">retrieve the details</a>,</li>
+        <li><a href="#retests_read">List your retests</a> and <a href="#retests_read">retrieve the details</a>.</li>
+      </ul>
       <h1 id="authentication">Authentication</h1>
+      <h3>Get your API access token</h3>
+      <p>Your API access token is accessible on Patrowl Dashboard in your account settings:</p>
       <ul>
-        <li>HTTP Authentication. Generate your API Key in your account settings (<a
-            href="https://patrowldashboard/account">https://patrowldashboard/account</a>).</li>
-        <li>Your key has to be sent in every requests, in Authorization header with value “Token YOUR_KEY”</li>
+        <li>Go to Patrowl Dashboard &gt; Account &gt; <a href="https://dashboard.cloud.patrowl.io/account">API Token</a></li>
+        <li>Press the button to generate the API token</li>
       </ul>
-      <h1 id="patrowldashboard-api-assets">assets</h1>
+      <p>The token can be renewed or deleted from this same page.</p>
+      <h3>How to use your API access token</h3>
+      <p>Your API access token has to be sent in every requests, in the <code>Authorization</code> header of the request:</p>
+      <p><code>Authorization: Token &lt;your-API-token&gt;</code></p>
+      <h1 id="patrowldashboard-api-assets">Assets</h1>
       <h2 id="assets_list">assets_list</h2>
       <p><a id="opIdassets_list"></a></p>
       <blockquote>
@@ -219,7 +231,7 @@
       <pre
         class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://dashboard.cloud.patrowl.io/api/auth/assets/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
       <p><code>GET /assets/</code></p>
-      <p>List all assets</p>
+      <p>List all your assets, or filter them according to your needs (by type, criticality, score, etc.).</p>
       <h3 id="assets_list-parameters">Parameters</h3>
       <table>
         <thead>
@@ -237,119 +249,119 @@
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Filter by asset types (web, domain…)</td>
+            <td>Filter by asset type. Ex: <code>ip</code>, <code>ip-range</code>, <code>ip-subnet</code>, <code>fqdn</code>, <code>domain</code>, <code>url</code> or <code>keyword</code>.</td>
           </tr>
           <tr>
             <td>type__icontains</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>none</td>
+            <td>Filter by asset type. The parameter is not case sensitive, and performs a containment test.</td>
           </tr>
           <tr>
             <td>criticality</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Filter by exact criticality</td>
+            <td>Filter by criticality. Ex: <code>1</code> for low, <code>2</code> for medium or <code>3</code> for high.</td>
           </tr>
           <tr>
             <td>description__icontains</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>none</td>
+            <td>Filter by description content. The parameter is not case sensitive, and performs a containment test.</td>
           </tr>
           <tr>
             <td>value</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Filter exact title</td>
+            <td>Filter by value. It can be an IP adresse, an URL, a domain, etc.</td>
           </tr>
           <tr>
             <td>value__icontains</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>none</td>
+            <td>Filter by value. The parameter is not case sensitive, and performs a containment test.</td>
           </tr>
           <tr>
             <td>score</td>
             <td>query</td>
             <td>number</td>
             <td>false</td>
-            <td>Filter by exact score</td>
+            <td>Filter by exact score (from <code>0</code> to <code>100</code>).</td>
           </tr>
           <tr>
             <td>score__lte</td>
             <td>query</td>
             <td>number</td>
             <td>false</td>
-            <td>Filter by score &lt;. ex: 30 will filter all asset with a score lower or equal 30</td>
+            <td>Filter asset less than the specified score. Ex: <code>30</code> will filter all asset with a score lower or equal 30.</td>
           </tr>
           <tr>
             <td>score__gte</td>
             <td>query</td>
             <td>number</td>
             <td>false</td>
-            <td>Filter by score &gt;. ex: 30 will filter all asset with a score greater or equal 30</td>
+            <td>Filter asset greater than the specified score. Ex: <code>30</code> will filter all asset with a score greater or equal 30.</td>
           </tr>
           <tr>
             <td>search</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Search query. Search in asset title</td>
+            <td>Search in value, type and criticality. The parameter is not case sensitive, and performs a containment test.</td>
           </tr>
           <tr>
             <td>org_id</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Organization to get asset from</td>
+            <td>Filter by organization. The <code>org_id</code> can be retrieved from <code>/api/auth/orgs</code>.</td>
           </tr>
           <tr>
             <td>is_monitored</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Filter by monitored asset</td>
+            <td>Filter by monitored asset. <code>true</code> to filter on monitored asset, and <code>false</code> on unmonitored asset.</td>
           </tr>
           <tr>
             <td>tags_value</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>none</td>
+            <td>Filter by tags. You can specify multiple tags, separated by a comma <code>,</code>. Assets returned will have at least one of these tags. Ex: <code>a,b,c</code>.</td>
           </tr>
           <tr>
             <td>tags_value_union</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>none</td>
+            <td>Filter by tags. You can specify multiple tags, separated by a comma <code>,</code>. Assets returned will have all these tags. Ex: <code>a,b,c</code>.</td>
           </tr>
           <tr>
             <td>tags_or</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>none</td>
+            <td>Filter by tags. You can specify multiple tags, separated by a comma <code>,</code>. Assets returned will have at least one of these tags. Ex: <code>a,b,c</code>.</td>
           </tr>
           <tr>
             <td>sorted_by</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>none</td>
+            <td>Sort the results. You can sort by: <code>id</code>, <code>value</code>, <code>description</code>, <code>rating</code>, <code>score</code>, <code>type</code>, <code>criticality</code>, <code>created_at</code> or <code>activevulns</code>. Add <code>-</code> in front of the parameter to have descending ordering. Ex: <code>-created_at</code>.</td>
           </tr>
           <tr>
             <td>tags</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>none</td>
+            <td>Filter by tags ID.</td>
           </tr>
           <tr>
             <td>page</td>
@@ -504,7 +516,7 @@
       <pre
         class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://dashboard.cloud.patrowl.io/api/auth/assets/{id}/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
       <p><code>GET /assets/{id}/</code></p>
-      <p>Get single Asset</p>
+      <p>Retrieve a asset with the specified ID.</p>
       <h3 id="assets_read-parameters">Parameters</h3>
       <table>
         <thead>
@@ -522,7 +534,7 @@
             <td>path</td>
             <td>string</td>
             <td>true</td>
-            <td>none</td>
+            <td>Asset ID</td>
           </tr>
         </tbody>
       </table>
@@ -557,7 +569,7 @@
         To perform this operation, you must be authenticated by means of one of the following methods:
         ApiKey
       </aside>
-      <h1 id="patrowldashboard-api-retests">retests</h1>
+      <h1 id="patrowldashboard-api-retests">Retests</h1>
       <h2 id="retests_list">retests_list</h2>
       <p><a id="opIdretests_list"></a></p>
       <blockquote>
@@ -568,7 +580,7 @@
       <pre
         class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://dashboard.cloud.patrowl.io/api/auth/retests/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
       <p><code>GET /retests/</code></p>
-      <p>List all retests</p>
+      <p>List all your retests, or filter them by status.</p>
       <h3 id="retests_list-parameters">Parameters</h3>
       <table>
         <thead>
@@ -586,14 +598,14 @@
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Filter by retest status</td>
+            <td>Filter by status. Ex: <code>none</code>, <code>in-progress</code>, <code>done-fixed</code>, <code>done-not-fixed</code>, <code>error</code> or <code>canceled</code>.</td>
           </tr>
           <tr>
             <td>sorted_by</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Sort by parameters. Ex: ‘-created_at’</td>
+            <td>Sort the results. You can sort by: <code>id</code>, <code>status</code>, <code>created_at</code> or <code>updated_at</code>. Add <code>-</code> in front of the parameter to have descending ordering. Ex: <code>-created_at</code>.</td>
           </tr>
           <tr>
             <td>page</td>
@@ -765,7 +777,7 @@
         To perform this operation, you must be authenticated by means of one of the following methods:
         ApiKey
       </aside>
-      <h1 id="patrowldashboard-api-vulns">vulns</h1>
+      <h1 id="patrowldashboard-api-vulns">Vulnerabilities</h1>
       <h2 id="vulns_list">vulns_list</h2>
       <p><a id="opIdvulns_list"></a></p>
       <blockquote>
