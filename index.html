@@ -319,7 +319,7 @@
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Filter by organization. The <code>org_id</code> can be retrieved from <code>/api/auth/orgs</code>.</td>
+            <td>Filter by organization. Your different <code>org_id</code> can be retrieved from <code>/api/auth/orgs</code>.</td>
           </tr>
           <tr>
             <td>is_monitored</td>
@@ -724,7 +724,7 @@
       <pre
         class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://dashboard.cloud.patrowl.io/api/auth/retests/{id}/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
       <p><code>GET /retests/{id}/</code></p>
-      <p>Get a single retest</p>
+      <p>Retrieve a retest with the specified ID.</p>
       <h3 id="retests_read-parameters">Parameters</h3>
       <table>
         <thead>
@@ -742,7 +742,7 @@
             <td>path</td>
             <td>string</td>
             <td>true</td>
-            <td>ID of the retest to get</td>
+            <td>Retest ID</td>
           </tr>
         </tbody>
       </table>
@@ -788,7 +788,7 @@
       <pre
         class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://dashboard.cloud.patrowl.io/api/auth/vulns/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
       <p><code>GET /vulns/</code></p>
-      <p>List Vulnerabilities</p>
+      <p>List all your vulnerabilities, or filter them by status.</p>
       <h3 id="vulns_list-parameters">Parameters</h3>
       <table>
         <thead>
@@ -806,14 +806,14 @@
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Filter by status. ex: “1”, or “2,3”</td>
+            <td>Filter by status. Ex: <code>new</code>, <code>ack</code>, <code>assigned</code>, <code>patched</code>, <code>closed</code>, <code>closed-benign</code>, <code>closed-fp</code>, <code>closed-duplicate</code>, <code>closed-workaround</code> or <code>closed-risk-acceptance</code>.</td>
           </tr>
           <tr>
             <td>search</td>
             <td>query</td>
             <td>string</td>
             <td>false</td>
-            <td>Search query. Will search in matching titles</td>
+            <td>Search in asset value, vulnerability title, category, description, solution headline and solution. The parameter is not case sensitive, and performs a containment test.</td>
           </tr>
           <tr>
             <td>page</td>
@@ -872,7 +872,7 @@
       <pre
         class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://dashboard.cloud.patrowl.io/api/auth/vulns/{id}/'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
       <p><code>GET /vulns/{id}/</code></p>
-      <p>Get Vulnerability</p>
+      <p>Retrieve a vulnerability with the specified ID.</p>
       <h3 id="vulns_read-parameters">Parameters</h3>
       <table>
         <thead>
@@ -890,7 +890,7 @@
             <td>path</td>
             <td>string</td>
             <td>true</td>
-            <td>ID of the vulnerability to get</td>
+            <td>Vulnerability ID</td>
           </tr>
         </tbody>
       </table>
@@ -935,7 +935,7 @@
       <pre
         class="language-javascript"><code class="language-javascript"><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Authorization'</span><span class="token operator">:</span><span class="token string">'Token {access-token}'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://dashboard.cloud.patrowl.io/api/auth/vulns/{id}/retests'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
       <p><code>GET /vulns/{id}/retests</code></p>
-      <p>List related retests.</p>
+      <p>List related retests to the specified ID vulnerability.</p>
       <h3 id="vulns_list_retests-parameters">Parameters</h3>
       <table>
         <thead>
