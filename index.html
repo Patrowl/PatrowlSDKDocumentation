@@ -317,14 +317,6 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-your-api-access-token" class="toc-h2 toc-link" data-title="Get your API access token">Get your API access token</a>
-                  </li>
-                  <li>
-                    <a href="#how-to-use-your-api-access-token" class="toc-h2 toc-link" data-title="How to use your API access token">How to use your API access token</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#patrowldashboard-dev-rest-api-alerts" class="toc-h1 toc-link" data-title="alerts">alerts</a>
@@ -1040,18 +1032,14 @@
 
 <p>Email: <a href="mailto:getsupport@patrowl.io">Support</a> 
  License: EULA License</p>
-<h1 id='authentication'>Authentication</h1><h2 id='get-your-api-access-token'>Get your API access token</h2>
-<p>Your API access token is accessible on Patrowl Dashboard in your account settings:</p>
+<h1 id='authentication'>Authentication</h1>
+<ul>
+<li>API Key (tokenAuth)
 
 <ul>
-<li>Go to Patrowl Dashboard &gt; Account &gt; API Token</li>
-<li>Press the button to generate the API token
-The token can be renewed or deleted from this same page.</li>
+<li>Parameter Name: <strong>Authorization</strong>, in: header. Token-based authentication with required prefix &quot;Token&quot;</li>
+</ul></li>
 </ul>
-<h2 id='how-to-use-your-api-access-token'>How to use your API access token</h2>
-<p>Your API access token has to be sent in every requests, in the Authorization header of the request:</p>
-
-<p><code>Authorization: Token &lt;your-API-token&gt;</code></p>
 
 <h1 id="patrowldashboard-dev-rest-api-alerts">alerts</h1>
 <h2 id='alerts_list'>alerts_list</h2>
@@ -1515,9 +1503,10 @@ Accept: application/json
 <p><code>GET /api/auth/alerts/{id}/ack</code></p>
 
 <p>Ack Feed</p>
-<h3 id='returns'>Returns:</h3>
-<p>* status 404 - Alert doesn&#39;t exist
-    * status 200 - Success</p>
+
+<p>:return 404 - Alert doesn&#39;t exist</p>
+
+<p>:return 200 - Success</p>
 
 <h3 id="alerts_ack-parameters">Parameters</h3>
 
@@ -1704,8 +1693,8 @@ Accept: application/json
 <p><code>GET /api/auth/alerts/ack</code></p>
 
 <p>Ack all alerts.</p>
-<h3 id='returns-2'>Returns:</h3>
-<p>* status 200 - Success</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -5645,19 +5634,20 @@ Accept: application/json
 </code></pre></div>
 <p><code>POST /api/auth/assets/</code></p>
 
-<p>Create a new Asset</p>
-<h3 id='notes'>Notes:</h3>
-<p>- Criticality:
-        - 1: Low
-        - 2: Medium
-        - 3: High</p>
-<h3 id='returns-3'>Returns:</h3>
-<p>- 400: You need to specify an org_id
-    - 400: Invalid asset value
-    - 400: Invalid data
-    - 403: User doesn&#39;t have access to this organization
-    - 404: Organization doesn&#39;t exist
-    - 201: Success</p>
+<p>Create a new Asset
+:param Criticality: 1 - Low / 2 - Medium / 3 - High</p>
+
+<p>:return 400: You need to specify an org_id</p>
+
+<p>:return 400: Invalid asset value</p>
+
+<p>:return 400: Invalid data</p>
+
+<p>:return 403: User doesn&#39;t have access to this organization</p>
+
+<p>:return 404: Organization doesn&#39;t exist</p>
+
+<p>:return 201: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -5937,17 +5927,18 @@ Accept: application/json
 <p><code>PATCH /api/auth/assets/</code></p>
 
 <p>Update several assets</p>
-<h3 id='notes-2'>Notes:</h3>
-<p>* Criticality:
-        * 1: Low
-        * 2: Medium
-        * 3: High</p>
-<h3 id='returns-4'>Returns:</h3>
-<p>- 400: assets_id is required
-    - 400: assets_id must be a list of integers
-    - 400: No assets with this or these IDs
-    - 400: Invalid data
-    - 200: Success</p>
+
+<p>:param Criticality: 1 - Low / 2 - Medium / 3 - High</p>
+
+<p>:return 400: assets_id is required</p>
+
+<p>:return 400: assets_id must be a list of integers</p>
+
+<p>:return 400: No assets with this or these IDs</p>
+
+<p>:return 400: Invalid data</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -6610,15 +6601,14 @@ Accept: application/json
 <p><code>PATCH /api/auth/assets/{id}/</code></p>
 
 <p>Update one specific asset</p>
-<h3 id='notes-3'>Notes:</h3>
-<p>* Criticality:
-        * 1: Low
-        * 2: Medium
-        * 3: High</p>
-<h3 id='returns-5'>Returns:</h3>
-<p>- 404: Asset doesn&#39;t exist
-    - 400: Invalid data
-    - 200: Success</p>
+
+<p>:param Criticality: 1 - Low / 2 - Medium / 3 - High</p>
+
+<p>:return 404: Asset doesn&#39;t exist</p>
+
+<p>:return 400: Invalid data</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -6906,9 +6896,10 @@ Accept: application/json
 <p><code>DELETE /api/auth/assets/{id}/</code></p>
 
 <p>Delete Asset with this id</p>
-<h3 id='returns-6'>Returns:</h3>
-<p>- 404: Asset not found
-    - 204: Success</p>
+
+<p>:return 404: Asset not found</p>
+
+<p>:return 204: Success</p>
 
 <h3 id="assets_delete-parameters">Parameters</h3>
 
@@ -7119,10 +7110,12 @@ Accept: application/json
 <p><code>GET /api/auth/assets/{id}/refresh</code></p>
 
 <p>Refresh an asset score.</p>
-<h3 id='returns-7'>Returns:</h3>
-<p>- 404: Asset not found
-    - 400: Error
-    - 200: Success</p>
+
+<p>:return: 404: Asset not found</p>
+
+<p>:return: 400: Error</p>
+
+<p>:return: 200: Success</p>
 
 <h3 id="assets_refresh_score-parameters">Parameters</h3>
 
@@ -7338,9 +7331,10 @@ Accept: application/json
 <p><code>DELETE /api/auth/assets/{id}/tags/{pk_tag}/del</code></p>
 
 <p>Remove an AssetTag from an asset.</p>
-<h3 id='returns-8'>Returns:</h3>
-<p>- 404: Asset or Asset Tag doesn&#39;t exist
-    - 204: Success</p>
+
+<p>:return: 404: Asset or Asset Tag doesn&#39;t exist</p>
+
+<p>:return: 204: Success</p>
 
 <h3 id="assets_remove_tag-parameters">Parameters</h3>
 
@@ -7567,12 +7561,16 @@ Accept: application/json
 <p><code>POST /api/auth/assets/{id}/tags/add</code></p>
 
 <p>Add an Asset Tag to an asset.</p>
-<h3 id='returns-9'>Returns:</h3>
-<p>- 404: Not found
-    - 400: Bad tag value
-    - 400: Bad tag organization value
-    - 403: Access denied
-    - 201: Success</p>
+
+<p>:return: 404: Not found</p>
+
+<p>:return: 400: Bad tag value</p>
+
+<p>:return: 400: Bad tag organization value</p>
+
+<p>:return: 403: Access denied</p>
+
+<p>:return: 201: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -7812,13 +7810,16 @@ Accept: application/json
 <p><code>DELETE /api/auth/assets/delete</code></p>
 
 <p>Delete Several Assets from list</p>
-<h3 id='args'>Args:</h3>
-<p>* assets_id: List with all the IDs to delete</p>
-<h3 id='returns-10'>Returns:</h3>
-<p>- 400: assets_id field is required
-    - 400: assets_id must be a list of integers
-    - 400: No assets with this or these IDs
-    - 204: Success</p>
+
+<p>:param assets_id: List with all the IDs to delete</p>
+
+<p>:return 400: assets_id field is required</p>
+
+<p>:return 400: assets_id must be a list of integers</p>
+
+<p>:return 400: No assets with this or these IDs</p>
+
+<p>:return 204: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -9018,12 +9019,14 @@ Accept: application/json
 <p><code>DELETE /api/auth/assets/group/</code></p>
 
 <p>Delete several AssetGroup</p>
-<h3 id='args-2'>Args:</h3>
-<p>* assets_group_id: List with all the IDs to delete</p>
-<h3 id='returns-11'>Returns:</h3>
-<p>- 400: Field is required / Must be a list of integers
-    - 404: AssetGroup Not found
-    - 200: Success</p>
+
+<p>:param assets_group_id: List with all the IDs to delete</p>
+
+<p>:return 400: Field is required / Must be a list of integers</p>
+
+<p>:return 404: AssetGroup Not found</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -9842,9 +9845,10 @@ Accept: application/json
 <p><code>POST /api/auth/assets/group/{id}/assets</code></p>
 
 <p>Add several assets to an asset group</p>
-<h3 id='returns-12'>Returns:</h3>
-<p>- 404: Asset Group not found
-    * 400 Invalid data</p>
+
+<p>:return: 404: Asset Group not found</p>
+
+<p>:return: 400 Invalid data</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -10079,12 +10083,14 @@ Accept: application/json
 <p><code>DELETE /api/auth/assets/group/{id}/assets</code></p>
 
 <p>Remove several assets from an AssetGroup</p>
-<h3 id='args-3'>Args:</h3>
-<p>* assets_id: List with all the IDs to remove</p>
-<h3 id='returns-13'>Returns:</h3>
-<p>- 404: AssetGroup Not found
-    - 400: Invalid data
-    - 200: Success</p>
+
+<p>:param assets_id: List with all the IDs to remove</p>
+
+<p>:return 404: AssetGroup Not found</p>
+
+<p>:return 400: Invalid data</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="assets_group_remove_assets-parameters">Parameters</h3>
 
@@ -10532,10 +10538,12 @@ Accept: application/json
 <p><code>POST /api/auth/assets/group/{id}/tag</code></p>
 
 <p>Add an AssetTag to an AssetGroup.</p>
-<h3 id='returns-14'>Returns:</h3>
-<p>- 404: AssetGroup Not found
-    - 400: Invalid Data
-    - 201: Success</p>
+
+<p>:return 404: AssetGroup Not found</p>
+
+<p>:return 400: Invalid Data</p>
+
+<p>:return 201: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -10772,10 +10780,12 @@ Accept: application/json
 <p><code>DELETE /api/auth/assets/group/{id}/tag/{pk_tag}</code></p>
 
 <p>Remove an AssetTag from an asset.</p>
-<h3 id='returns-15'>Returns:</h3>
-<p>- 404: AssetGroup Not Found / Asset Not Found
-    - 400: Tag not in AssetGroup
-    - 204: Success</p>
+
+<p>:return 404: AssetGroup Not Found / Asset Not Found</p>
+
+<p>:return 400: Tag not in AssetGroup</p>
+
+<p>:return 204: Success</p>
 
 <h3 id="assets_group_remove_tag-parameters">Parameters</h3>
 
@@ -11011,15 +11021,20 @@ Accept: application/json
 <p><code>POST /api/auth/assets/import</code></p>
 
 <p>Import Assets from CSV</p>
-<h3 id='args-4'>Args:</h3>
-<p>* data: The csv file</p>
-<h3 id='returns-16'>Returns:</h3>
-<p>- 400: You need to specify an org_id
-    - 403: User doesn&#39;t have access to this organization
-    - 400: The file needs to be csv
-    - 400: Invalid CSV
-    - 400: Invalid value for an asset
-    - 200: Success</p>
+
+<p>:param data: The csv file</p>
+
+<p>:return: 400: You need to specify an org_id</p>
+
+<p>:return: 403: User doesn&#39;t have access to this organization</p>
+
+<p>:return: 400: The file needs to be csv</p>
+
+<p>:return: 400: Invalid CSV</p>
+
+<p>:return: 400: Invalid value for an asset</p>
+
+<p>:return: 200: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -13868,11 +13883,12 @@ Accept: application/json
 
 <p>Check connection by retrieving a new access token for Cybelangel with
 Cybelangel API credentials client_id and client_secret.</p>
-<h3 id='raises'>Raises:</h3>
-<p>* NotFound: The Cybelangel configuration does not exist.</p>
-<h3 id='returns-17'>Returns:</h3>
-<p>- 200: Success
-    - 400: Error: Invalid Credentials</p>
+
+<p>:return 404: The Cybelangel configuration does not exist</p>
+
+<p>:return 200: Success</p>
+
+<p>:return 400: Invalid Credentials</p>
 
 <h3 id="cybelangel_check_connection-parameters">Parameters</h3>
 
@@ -14088,13 +14104,15 @@ Accept: application/json
 </code></pre></div>
 <p><code>GET /api/auth/cybelangel/{id}/import</code></p>
 
-<p>Import all Cybelangel reports on Patrowl Dashboard.</p>
-<h3 id='raises-2'>Raises:</h3>
-<p>* ParseError: An error occurred while retrieving reports from CybelAngel. Please try again later.&quot;
-    * AuthenticationFailed: An error occurred while retrieving the access token for CybelAngel API. Please try again later
-    * Throttled: An import from CybelAngel is already in progress</p>
-<h3 id='returns-18'>Returns:</h3>
-<p>- 200: success</p>
+<p>Import all Cybelangel reports on Patrowl Dashboard</p>
+
+<p>:return 401: An error occurred while retrieving the access token for CybelAngel API. Please try again later</p>
+
+<p>:return 400: An error occurred while retrieving reports from CybelAngel. Please try again later</p>
+
+<p>:return 400: An import from CybelAngel is already in progress</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="cybelangel_import_reports-parameters">Parameters</h3>
 
@@ -23812,9 +23830,10 @@ Accept: application/json
 <p><code>POST /api/auth/retests/{id}/</code></p>
 
 <p>Update the comment of one retest</p>
-<h3 id='returns-19'>Returns</h3>
-<p>- 404: Retest not found
-    - 200: Success</p>
+
+<p>:return: 404: Retest not found</p>
+
+<p>:return: 200: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -24041,9 +24060,10 @@ Accept: application/json
 <p><code>GET /api/auth/retests/{id}/cancel</code></p>
 
 <p>Cancel one specific retest and sync with PatrowlArsenal.</p>
-<h3 id='returns-20'>Returns:</h3>
-<p>- 404: Retest not found
-    - 200: Success</p>
+
+<p>:return 404: Retest not found</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="retests_cancel-parameters">Parameters</h3>
 
@@ -24253,10 +24273,12 @@ Accept: application/json
 <p><code>GET /api/auth/retests/{id}/refresh</code></p>
 
 <p>Refresh a retest, sync with PatrowlArsenal.</p>
-<h3 id='returns-21'>Returns:</h3>
-<p>- 400: Error during the sync with arsenal
-    - 404: Retest not found
-    - 200: Success</p>
+
+<p>:return 400: Error during the sync with arsenal</p>
+
+<p>:return 404: Retest not found</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="retests_refresh-parameters">Parameters</h3>
 
@@ -26042,9 +26064,9 @@ Accept: application/json
 
 <p>Update several status</p>
 
-<p>Returns:
-    - 400: Invalid data
-    - 200: Success</p>
+<p>:return 400: Invalid data</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -26245,8 +26267,8 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/{id}/next/</code></p>
 
 <p>Return next vulnerability by filter/sort.</p>
-<h3 id='returns-22'>Returns:</h3>
-<p>- 200: Success</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="vulnerabilties_get_next_vuln-parameters">Parameters</h3>
 
@@ -26482,8 +26504,8 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/{id}/prev/</code></p>
 
 <p>Return previous vulnerability by filter/sort.</p>
-<h3 id='returns-23'>Returns:</h3>
-<p>- 200: Success</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="vulnerabilties_get_previous_vuln-parameters">Parameters</h3>
 
@@ -27445,10 +27467,12 @@ Accept: application/json
 <p><code>POST /api/auth/vulns/{id}/attachements</code></p>
 
 <p>Upload file attachments</p>
-<h3 id='returns-24'>Returns:</h3>
-<p>- 404: Vuln not found
-    - 400: Invalid file or title
-    - 201: Vulnerabiltiy Attachment upload</p>
+
+<p>:return 404: Vuln not found</p>
+
+<p>:return 400: Invalid file or title</p>
+
+<p>:return 201: Vulnerabiltiy Attachment upload</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -27711,9 +27735,10 @@ Accept: application/json
 <p><code>POST /api/auth/vulns/{id}/comments</code></p>
 
 <p>Add a new comments.</p>
-<h3 id='returns-25'>Returns:</h3>
-<p>- 404: Vuln not found
-    - 201: Success</p>
+
+<p>:return 404: Vuln not found</p>
+
+<p>:return 201: Success</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -28004,9 +28029,10 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/{id}/events</code></p>
 
 <p>List related events.</p>
-<h3 id='returns-26'>Returns:</h3>
-<p>- 404: Vuln not found
-    - 200: Success</p>
+
+<p>:return 404: Vuln not found</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="vulnerabilities_list_events-parameters">Parameters</h3>
 
@@ -28730,10 +28756,12 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/{id}/periodic-retest</code></p>
 
 <p>List related retests.</p>
-<h3 id='returns-27'>Returns:</h3>
-<p>- 404: Vuln not found
-    - 400: Vuln already fix
-    - 200: Success</p>
+
+<p>:return 404: Vuln not found</p>
+
+<p>:return 400: Vuln already fix</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="vulnerabilties_get_periodic_retest-parameters">Parameters</h3>
 
@@ -28966,9 +28994,10 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/{id}/retests</code></p>
 
 <p>List related retests.</p>
-<h3 id='returns-28'>Returns:</h3>
-<p>- 404: Vuln not found
-    - 200: Success</p>
+
+<p>:return 404: Vuln not found</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="vulnerabilities_list_retests-parameters">Parameters</h3>
 
@@ -29695,10 +29724,12 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/{id}/retests/add</code></p>
 
 <p>Add retest for one vulnerabiltiy</p>
-<h3 id='returns-29'>Returns:</h3>
-<p>- 404: Vuln not foud
-    - 429: Too much manual retest / Auto Retest already exist
-    - 200: Success</p>
+
+<p>:return 404: Vuln not foud</p>
+
+<p>:return 429: Too much manual retest / Auto Retest already exist</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="vulnerabilities_add_retest-parameters">Parameters</h3>
 
@@ -29915,9 +29946,10 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/{id}/tickets</code></p>
 
 <p>List related tickets.</p>
-<h3 id='returns-30'>Returns:</h3>
-<p>- 404: Vuln not found
-    - 200: Success</p>
+
+<p>:return 404: Vuln not found</p>
+
+<p>:return 200: Success</p>
 
 <h3 id="vulnerabilities_list_tickets-parameters">Parameters</h3>
 
@@ -30643,11 +30675,14 @@ Accept: application/json
 <p><code>DELETE /api/auth/vulns/attachements/{id}/</code></p>
 
 <p>Delete file link to a vulnerability</p>
-<h3 id='returns-31'>Returns:</h3>
-<p>- 404: File not found
-    - 403: Unauthorized to delete file upload by Patrowl
-    - 400: Unable to delete this file
-    - 204: Success</p>
+
+<p>:return 404: File not found</p>
+
+<p>:return 403: Unauthorized to delete file upload by Patrowl</p>
+
+<p>:return 400: Unable to delete this file</p>
+
+<p>:return 204: Success</p>
 
 <h3 id="vulnerabilities_delete_file_attachments-parameters">Parameters</h3>
 
@@ -30891,10 +30926,9 @@ Accept: application/json
 </code></pre></div>
 <p><code>GET /api/auth/vulns/by-efforts</code></p>
 
-<p>Recommendations by effort
-Data corresponding to the recommendations total on each effort types</p>
-<h3 id='returns-32'>Returns:</h3>
-<p>- 200: Success</p>
+<p>Recommendations by effort Data corresponding to the recommendations total on each effort types</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -31078,10 +31112,9 @@ Accept: application/json
 </code></pre></div>
 <p><code>GET /api/auth/vulns/by-priorities</code></p>
 
-<p>Recommendations by priority
-Data corresponding to the recommendations total on each priority types</p>
-<h3 id='returns-33'>Returns:</h3>
-<p>- 200: Success</p>
+<p>Recommendations by priority data corresponding to the recommendations total on each priority types</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -31265,10 +31298,9 @@ Accept: application/json
 </code></pre></div>
 <p><code>GET /api/auth/vulns/by-severity-and-time</code></p>
 
-<p>Overdues recommendations by severity and time
-Data corresponding to the recommendations total on each severity types &amp; time</p>
-<h3 id='returns-34'>Returns:</h3>
-<p>- 200: Success</p>
+<p>Overdues recommendations by severity and time data corresponding to the recommendations total on each severity types &amp; time</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -31453,8 +31485,8 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/by-vulns-status</code></p>
 
 <p>Data corresponding to the total recomm on each effort types.</p>
-<h3 id='returns-35'>Returns:</h3>
-<p>- 200: Success</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -32116,8 +32148,8 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/severities</code></p>
 
 <p>Get severities for all vulns.</p>
-<h3 id='returns-36'>Returns:</h3>
-<p>- 200: Success</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -32302,8 +32334,8 @@ Accept: application/json
 <p><code>GET /api/auth/vulns/severities/over-time</code></p>
 
 <p>Get severities over time.</p>
-<h3 id='returns-37'>Returns:</h3>
-<p>- 200: Success</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
@@ -32489,8 +32521,8 @@ Accept: application/json
 
 <p>Data corresponding to the number of opened and closed vulns on the last 7 days
 A key opened and a key closed, and in each key an object with a key total a key increase</p>
-<h3 id='returns-38'>Returns:</h3>
-<p>- 200: Success</p>
+
+<p>:return 200: Success</p>
 
 <blockquote>
 <p>Example responses</p>
