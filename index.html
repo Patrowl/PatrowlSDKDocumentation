@@ -317,6 +317,14 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-your-api-access-token" class="toc-h2 toc-link" data-title="Get your API access token">Get your API access token</a>
+                  </li>
+                  <li>
+                    <a href="#how-to-use-your-api-access-token" class="toc-h2 toc-link" data-title="How to use your API access token">How to use your API access token</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#patrowldashboard-dev-rest-api-alerts" class="toc-h1 toc-link" data-title="alerts">alerts</a>
@@ -1032,7 +1040,7 @@
 
 <p>Email: <a href="mailto:getsupport@patrowl.io">Support</a> 
  License: EULA License</p>
-<h1 id='authentication'>Authentication</h1><h4 id='get-your-api-access-token'>Get your API access token</h4>
+<h1 id='authentication'>Authentication</h1><h2 id='get-your-api-access-token'>Get your API access token</h2>
 <p>Your API access token is accessible on Patrowl Dashboard in your account settings:</p>
 
 <ul>
@@ -1040,8 +1048,10 @@
 <li>Press the button to generate the API token
 The token can be renewed or deleted from this same page.</li>
 </ul>
-<h4 id='how-to-use-your-api-access-token'>How to use your API access token</h4>
+<h2 id='how-to-use-your-api-access-token'>How to use your API access token</h2>
 <p>Your API access token has to be sent in every requests, in the Authorization header of the request:</p>
+
+<p><code>Authorization: Token &lt;your-API-token&gt;</code></p>
 
 <h1 id="patrowldashboard-dev-rest-api-alerts">alerts</h1>
 <h2 id='alerts_list'>alerts_list</h2>
