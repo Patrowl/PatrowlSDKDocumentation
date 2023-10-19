@@ -697,16 +697,22 @@
                     <a href="#pentests_create" class="toc-h2 toc-link" data-title="pentests_create">pentests_create</a>
                   </li>
                   <li>
+                    <a href="#pentests_destroy" class="toc-h2 toc-link" data-title="pentests_destroy">pentests_destroy</a>
+                  </li>
+                  <li>
                     <a href="#pentests_retrieve" class="toc-h2 toc-link" data-title="pentests_retrieve">pentests_retrieve</a>
                   </li>
                   <li>
                     <a href="#pentests_partial_update" class="toc-h2 toc-link" data-title="pentests_partial_update">pentests_partial_update</a>
                   </li>
                   <li>
-                    <a href="#pentests_destroy" class="toc-h2 toc-link" data-title="pentests_destroy">pentests_destroy</a>
+                    <a href="#pentests_destroy_2" class="toc-h2 toc-link" data-title="pentests_destroy_2">pentests_destroy_2</a>
                   </li>
                   <li>
                     <a href="#pentests_assets_export_csv_retrieve" class="toc-h2 toc-link" data-title="pentests_assets_export_csv_retrieve">pentests_assets_export_csv_retrieve</a>
+                  </li>
+                  <li>
+                    <a href="#pentest_assets_import_assets_from_csv" class="toc-h2 toc-link" data-title="pentest_assets_import_assets_from_csv">pentest_assets_import_assets_from_csv</a>
                   </li>
                   <li>
                     <a href="#pentests_vulns_export_csv_retrieve" class="toc-h2 toc-link" data-title="pentests_vulns_export_csv_retrieve">pentests_vulns_export_csv_retrieve</a>
@@ -774,13 +780,16 @@
                     <a href="#vulnerabilities_bulk_update_vulns_status" class="toc-h2 toc-link" data-title="vulnerabilities_bulk_update_vulns_status">vulnerabilities_bulk_update_vulns_status</a>
                   </li>
                   <li>
+                    <a href="#vulns_destroy" class="toc-h2 toc-link" data-title="vulns_destroy">vulns_destroy</a>
+                  </li>
+                  <li>
                     <a href="#vulns_retrieve" class="toc-h2 toc-link" data-title="vulns_retrieve">vulns_retrieve</a>
                   </li>
                   <li>
                     <a href="#vulns_partial_update" class="toc-h2 toc-link" data-title="vulns_partial_update">vulns_partial_update</a>
                   </li>
                   <li>
-                    <a href="#vulns_destroy" class="toc-h2 toc-link" data-title="vulns_destroy">vulns_destroy</a>
+                    <a href="#vulns_destroy_2" class="toc-h2 toc-link" data-title="vulns_destroy_2">vulns_destroy_2</a>
                   </li>
                   <li>
                     <a href="#vulnerabilities_upload_file_attachments" class="toc-h2 toc-link" data-title="vulnerabilities_upload_file_attachments">vulnerabilities_upload_file_attachments</a>
@@ -853,6 +862,9 @@
           <li>
             <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tocS_ArsenalVulnerability" class="toc-h2 toc-link" data-title="ArsenalVulnerability">ArsenalVulnerability</a>
+                  </li>
                   <li>
                     <a href="#tocS_Asset" class="toc-h2 toc-link" data-title="Asset">Asset</a>
                   </li>
@@ -1059,6 +1071,9 @@
                   </li>
                   <li>
                     <a href="#tocS_VulnerabilityLite" class="toc-h2 toc-link" data-title="VulnerabilityLite">VulnerabilityLite</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_VulnerabilityUser" class="toc-h2 toc-link" data-title="VulnerabilityUser">VulnerabilityUser</a>
                   </li>
                   <li>
                     <a href="#tocS_WebPortLite" class="toc-h2 toc-link" data-title="WebPortLite">WebPortLite</a>
@@ -5538,9 +5553,7 @@ Accept: application/json
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5554,7 +5567,8 @@ Accept: application/json
       </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5793,9 +5807,7 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5809,7 +5821,8 @@ Accept: application/json
   </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_create-responses">Responses</h3>
@@ -6268,9 +6281,7 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -6284,7 +6295,8 @@ Accept: application/json
   </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_retrieve-responses">Responses</h3>
@@ -6542,9 +6554,7 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -6558,7 +6568,8 @@ Accept: application/json
   </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_create_2-responses">Responses</h3>
@@ -6824,9 +6835,7 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -6840,7 +6849,8 @@ Accept: application/json
   </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_partial_update-responses">Responses</h3>
@@ -9352,9 +9362,7 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -9368,7 +9376,8 @@ Accept: application/json
   </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_export_csv_retrieve-responses">Responses</h3>
@@ -9619,9 +9628,7 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"groups"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -9635,7 +9642,8 @@ Accept: application/json
   </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_export_csv_create-responses">Responses</h3>
@@ -25380,6 +25388,147 @@ Accept: application/json
 <aside class="warning">
 To perform this operation, you must be authenticated
 </aside>
+<h2 id='pentests_destroy'>pentests_destroy</h2>
+<p><a id="opIdpentests_destroy"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> DELETE /api/auth/pentests/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/auth/pentests/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Token 1234567890abcefghijklmnopqrstuvwxyz12345</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/auth/pentests/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'/api/auth/pentests/'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'/api/auth/pentests/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'DELETE'</span><span class="p">,</span><span class="s1">'/api/auth/pentests/'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"/api/auth/pentests/"</span><span class="o">);</span>
+<span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"DELETE"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Token 1234567890abcefghijklmnopqrstuvwxyz12345"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/api/auth/pentests/"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div>
+<p><code>DELETE /api/auth/pentests/</code></p>
+
+<p>Delete a pentest.</p>
+
+<h3 id="pentests_destroy-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>No response body</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated
+</aside>
 <h2 id='pentests_retrieve'>pentests_retrieve</h2>
 <p><a id="opIdpentests_retrieve"></a></p>
 
@@ -25822,8 +25971,8 @@ Accept: application/json
 <aside class="warning">
 To perform this operation, you must be authenticated
 </aside>
-<h2 id='pentests_destroy'>pentests_destroy</h2>
-<p><a id="opIdpentests_destroy"></a></p>
+<h2 id='pentests_destroy_2'>pentests_destroy_2</h2>
+<p><a id="opIdpentests_destroy_2"></a></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -25942,7 +26091,7 @@ curl <span class="nt">-X</span> DELETE /api/auth/pentests/<span class="o">{</spa
 
 <p>Delete a pentest.</p>
 
-<h3 id="pentests_destroy-parameters">Parameters</h3>
+<h3 id="pentests_destroy_2-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -25962,7 +26111,7 @@ curl <span class="nt">-X</span> DELETE /api/auth/pentests/<span class="o">{</spa
 </tr>
 </tbody></table>
 
-<h3 id="pentests_destroy-responses">Responses</h3>
+<h3 id="pentests_destroy_2-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -26168,6 +26317,280 @@ Accept: application/json
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>none</td>
 <td><a href="#schemapentest">Pentest</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated
+</aside>
+<h2 id='pentest_assets_import_assets_from_csv'>pentest_assets_import_assets_from_csv</h2>
+<p><a id="opIdpentest_assets_import_assets_from_csv"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/auth/pentests/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/assets/import/csv?org_id<span class="o">=</span>0 <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/auth/pentests/{id}/assets/import/csv?org_id=0</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+
+Content-Type: application/json
+Accept: application/json
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "requested_by": "string",
+  "title": "string",
+  "provider": "string",
+  "organization": 0,
+  "description": "string",
+  "comments": "string",
+  "date_from": "2019-08-24T14:15:22Z",
+  "date_to": "2019-08-24T14:15:22Z",
+  "created_at": "2019-08-24T14:15:22Z",
+  "updated_at": "2019-08-24T14:15:22Z",
+  "suborganizations": [
+    0
+  ]
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Token 1234567890abcefghijklmnopqrstuvwxyz12345</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/auth/pentests/{id}/assets/import/csv?org_id=0</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'/api/auth/pentests/{id}/assets/import/csv'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="s1">'org_id'</span> <span class="o">=&gt;</span> <span class="s1">'integer'</span>
+<span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'/api/auth/pentests/{id}/assets/import/csv'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+  <span class="s">'org_id'</span><span class="p">:</span> <span class="s">'0'</span>
+<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'/api/auth/pentests/{id}/assets/import/csv'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"/api/auth/pentests/{id}/assets/import/csv?org_id=0"</span><span class="o">);</span>
+<span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+        <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Token 1234567890abcefghijklmnopqrstuvwxyz12345"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/api/auth/pentests/{id}/assets/import/csv"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div>
+<p><code>POST /api/auth/pentests/{id}/assets/import/csv</code></p>
+
+<p>Import Assets from CSV</p>
+
+<p>:param data: The csv file</p>
+
+<p>:return: 400: You need to specify an org_id</p>
+
+<p>:return: 403: User doesn&#39;t have access to this organization</p>
+
+<p>:return: 400: The file needs to be csv</p>
+
+<p>:return: 400: Invalid CSV</p>
+
+<p>:return: 400: Invalid value for an asset</p>
+
+<p>:return: 200: Success</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"requested_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">0</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">requested_by</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">provider</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">organization</span><span class="pi">:</span> <span class="m">0</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">comments</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">date_from</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
+<span class="na">date_to</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
+<span class="na">created_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
+<span class="na">updated_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
+<span class="na">suborganizations</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="m">0</span>
+
+</code></pre></div>
+<h3 id="pentest_assets_import_assets_from_csv-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>integer</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>org_id</td>
+<td>query</td>
+<td>integer</td>
+<td>true</td>
+<td>Organization</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemapentest">Pentest</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="pentest_assets_import_assets_from_csv-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td><a href="#schemabasicresponse">BasicResponse</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>none</td>
+<td><a href="#schemabasicresponsewithmessage">BasicResponseWithMessage</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>none</td>
+<td><a href="#schemabasicresponsewithmessage">BasicResponseWithMessage</a></td>
 </tr>
 </tbody></table>
 
@@ -29214,6 +29637,13 @@ Accept: application/json
 <td>none</td>
 </tr>
 <tr>
+<td>remediation_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
 <td>search</td>
 <td>query</td>
 <td>string</td>
@@ -29341,6 +29771,20 @@ Accept: application/json
 </tr>
 <tr>
 <td>title__icontains</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id__icontains</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
@@ -29514,6 +29958,10 @@ Accept: application/json
 </tr>
 <tr>
 <td>sorted_by</td>
+<td>-user_friendly_id</td>
+</tr>
+<tr>
+<td>sorted_by</td>
 <td>-vuln_owners</td>
 </tr>
 <tr>
@@ -29591,6 +30039,10 @@ Accept: application/json
 <tr>
 <td>sorted_by</td>
 <td>updated_at</td>
+</tr>
+<tr>
+<td>sorted_by</td>
+<td>user_friendly_id</td>
 </tr>
 <tr>
 <td>sorted_by</td>
@@ -29756,7 +30208,8 @@ Accept: application/json
   "ticketstatus": -2147483648,
   "solution_owners": [
     0
-  ]
+  ],
+  "updated_by_user_at": "2019-08-24T14:15:22Z"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -29920,7 +30373,8 @@ Accept: application/json
   </span><span class="nl">"ticketstatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">arsenal_id</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">asset</span><span class="pi">:</span> <span class="m">0</span>
@@ -29960,6 +30414,7 @@ Accept: application/json
 <span class="na">ticketstatus</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">solution_owners</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="m">0</span>
+<span class="na">updated_by_user_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 
 </code></pre></div>
 <h3 id="vulns_create-parameters">Parameters</h3>
@@ -29989,6 +30444,7 @@ Accept: application/json
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_friendly_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"arsenal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -30035,7 +30491,23 @@ Accept: application/json
   </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arsenal_vulnerability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_effort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvss_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"last_updated_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="vulns_create-responses">Responses</h3>
@@ -30274,6 +30746,157 @@ Accept: application/json
 <aside class="warning">
 To perform this operation, you must be authenticated
 </aside>
+<h2 id='vulns_destroy'>vulns_destroy</h2>
+<p><a id="opIdvulns_destroy"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> DELETE /api/auth/vulns/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/auth/vulns/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Token 1234567890abcefghijklmnopqrstuvwxyz12345</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/auth/vulns/</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">delete</span> <span class="s1">'/api/auth/vulns/'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">'/api/auth/vulns/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'DELETE'</span><span class="p">,</span><span class="s1">'/api/auth/vulns/'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"/api/auth/vulns/"</span><span class="o">);</span>
+<span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"DELETE"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Token 1234567890abcefghijklmnopqrstuvwxyz12345"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="s">"/api/auth/vulns/"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div>
+<p><code>DELETE /api/auth/vulns/</code></p>
+
+<p>Delete Several Vulns from list</p>
+
+<p>:param vulns_id: List with all the IDs to delete</p>
+
+<p>:return 400: vulns_id field is required</p>
+
+<p>:return 400: vulns_id must be a list of integers</p>
+
+<p>:return 400: No vulns with this or these IDs</p>
+
+<p>:return 204: Success</p>
+
+<h3 id="vulns_destroy-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">No Content</a></td>
+<td>No response body</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated
+</aside>
 <h2 id='vulns_retrieve'>vulns_retrieve</h2>
 <p><a id="opIdvulns_retrieve"></a></p>
 
@@ -30429,6 +31052,7 @@ Accept: application/json
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_friendly_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"arsenal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -30475,7 +31099,23 @@ Accept: application/json
   </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arsenal_vulnerability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_effort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvss_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"last_updated_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="vulns_retrieve-responses">Responses</h3>
@@ -30558,7 +31198,8 @@ Accept: application/json
   "ticketstatus": -2147483648,
   "solution_owners": [
     0
-  ]
+  ],
+  "updated_by_user_at": "2019-08-24T14:15:22Z"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -30722,7 +31363,8 @@ Accept: application/json
   </span><span class="nl">"ticketstatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">arsenal_id</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">asset</span><span class="pi">:</span> <span class="m">0</span>
@@ -30762,6 +31404,7 @@ Accept: application/json
 <span class="na">ticketstatus</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">solution_owners</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="m">0</span>
+<span class="na">updated_by_user_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 
 </code></pre></div>
 <h3 id="vulns_partial_update-parameters">Parameters</h3>
@@ -30798,6 +31441,7 @@ Accept: application/json
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_friendly_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"arsenal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -30844,7 +31488,23 @@ Accept: application/json
   </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arsenal_vulnerability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_effort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvss_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"last_updated_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="vulns_partial_update-responses">Responses</h3>
@@ -30868,8 +31528,8 @@ Accept: application/json
 <aside class="warning">
 To perform this operation, you must be authenticated
 </aside>
-<h2 id='vulns_destroy'>vulns_destroy</h2>
-<p><a id="opIdvulns_destroy"></a></p>
+<h2 id='vulns_destroy_2'>vulns_destroy_2</h2>
+<p><a id="opIdvulns_destroy_2"></a></p>
 
 <blockquote>
 <p>Code samples</p>
@@ -30988,7 +31648,7 @@ curl <span class="nt">-X</span> DELETE /api/auth/vulns/<span class="o">{</span><
 
 <p>API endpoint that allows Vulnerabilities to be viewed or edited.</p>
 
-<h3 id="vulns_destroy-parameters">Parameters</h3>
+<h3 id="vulns_destroy_2-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -31008,7 +31668,7 @@ curl <span class="nt">-X</span> DELETE /api/auth/vulns/<span class="o">{</span><
 </tr>
 </tbody></table>
 
-<h3 id="vulns_destroy-responses">Responses</h3>
+<h3 id="vulns_destroy_2-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -31336,7 +31996,8 @@ Accept: application/json
   "ticketstatus": -2147483648,
   "solution_owners": [
     0
-  ]
+  ],
+  "updated_by_user_at": "2019-08-24T14:15:22Z"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -31504,7 +32165,8 @@ Accept: application/json
   </span><span class="nl">"ticketstatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">arsenal_id</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">asset</span><span class="pi">:</span> <span class="m">0</span>
@@ -31544,6 +32206,7 @@ Accept: application/json
 <span class="na">ticketstatus</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">solution_owners</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="m">0</span>
+<span class="na">updated_by_user_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 
 </code></pre></div>
 <h3 id="vulnerabilities_create_comment-parameters">Parameters</h3>
@@ -31968,6 +32631,13 @@ Accept: application/json
 <td>none</td>
 </tr>
 <tr>
+<td>remediation_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
 <td>search</td>
 <td>query</td>
 <td>string</td>
@@ -32095,6 +32765,20 @@ Accept: application/json
 </tr>
 <tr>
 <td>title__icontains</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id__icontains</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
@@ -32268,6 +32952,10 @@ Accept: application/json
 </tr>
 <tr>
 <td>sorted_by</td>
+<td>-user_friendly_id</td>
+</tr>
+<tr>
+<td>sorted_by</td>
 <td>-vuln_owners</td>
 </tr>
 <tr>
@@ -32345,6 +33033,10 @@ Accept: application/json
 <tr>
 <td>sorted_by</td>
 <td>updated_at</td>
+</tr>
+<tr>
+<td>sorted_by</td>
+<td>user_friendly_id</td>
 </tr>
 <tr>
 <td>sorted_by</td>
@@ -32527,7 +33219,8 @@ Accept: application/json
   "ticketstatus": -2147483648,
   "solution_owners": [
     0
-  ]
+  ],
+  "updated_by_user_at": "2019-08-24T14:15:22Z"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -32691,7 +33384,8 @@ Accept: application/json
   </span><span class="nl">"ticketstatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">arsenal_id</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">asset</span><span class="pi">:</span> <span class="m">0</span>
@@ -32731,6 +33425,7 @@ Accept: application/json
 <span class="na">ticketstatus</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">solution_owners</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="m">0</span>
+<span class="na">updated_by_user_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 
 </code></pre></div>
 <h3 id="vulns_owners_create-parameters">Parameters</h3>
@@ -32767,6 +33462,7 @@ Accept: application/json
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_friendly_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"arsenal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -32813,7 +33509,23 @@ Accept: application/json
   </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arsenal_vulnerability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_effort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvss_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"last_updated_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="vulns_owners_create-responses">Responses</h3>
@@ -33547,6 +34259,13 @@ Accept: application/json
 <td>none</td>
 </tr>
 <tr>
+<td>remediation_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
 <td>search</td>
 <td>query</td>
 <td>string</td>
@@ -33674,6 +34393,20 @@ Accept: application/json
 </tr>
 <tr>
 <td>title__icontains</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id__icontains</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
@@ -33847,6 +34580,10 @@ Accept: application/json
 </tr>
 <tr>
 <td>sorted_by</td>
+<td>-user_friendly_id</td>
+</tr>
+<tr>
+<td>sorted_by</td>
 <td>-vuln_owners</td>
 </tr>
 <tr>
@@ -33924,6 +34661,10 @@ Accept: application/json
 <tr>
 <td>sorted_by</td>
 <td>updated_at</td>
+</tr>
+<tr>
+<td>sorted_by</td>
+<td>user_friendly_id</td>
 </tr>
 <tr>
 <td>sorted_by</td>
@@ -34338,7 +35079,8 @@ Accept: application/json
   "ticketstatus": -2147483648,
   "solution_owners": [
     0
-  ]
+  ],
+  "updated_by_user_at": "2019-08-24T14:15:22Z"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -34502,7 +35244,8 @@ Accept: application/json
   </span><span class="nl">"ticketstatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">arsenal_id</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">asset</span><span class="pi">:</span> <span class="m">0</span>
@@ -34542,6 +35285,7 @@ Accept: application/json
 <span class="na">ticketstatus</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">solution_owners</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="m">0</span>
+<span class="na">updated_by_user_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 
 </code></pre></div>
 <h3 id="vulns_solution_owners_create-parameters">Parameters</h3>
@@ -34578,6 +35322,7 @@ Accept: application/json
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_friendly_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"arsenal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -34624,7 +35369,23 @@ Accept: application/json
   </span><span class="nl">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"vuln_solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arsenal_vulnerability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_effort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvss_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"last_updated_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="vulns_solution_owners_create-responses">Responses</h3>
@@ -35121,6 +35882,13 @@ Accept: application/json
 <td>none</td>
 </tr>
 <tr>
+<td>remediation_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
 <td>search</td>
 <td>query</td>
 <td>string</td>
@@ -35248,6 +36016,20 @@ Accept: application/json
 </tr>
 <tr>
 <td>title__icontains</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id__icontains</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
@@ -35421,6 +36203,10 @@ Accept: application/json
 </tr>
 <tr>
 <td>sorted_by</td>
+<td>-user_friendly_id</td>
+</tr>
+<tr>
+<td>sorted_by</td>
 <td>-vuln_owners</td>
 </tr>
 <tr>
@@ -35498,6 +36284,10 @@ Accept: application/json
 <tr>
 <td>sorted_by</td>
 <td>updated_at</td>
+</tr>
+<tr>
+<td>sorted_by</td>
+<td>user_friendly_id</td>
 </tr>
 <tr>
 <td>sorted_by</td>
@@ -36868,7 +37658,8 @@ Accept: application/json
   "ticketstatus": -2147483648,
   "solution_owners": [
     0
-  ]
+  ],
+  "updated_by_user_at": "2019-08-24T14:15:22Z"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -37032,7 +37823,8 @@ Accept: application/json
   </span><span class="nl">"ticketstatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">arsenal_id</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">asset</span><span class="pi">:</span> <span class="m">0</span>
@@ -37072,6 +37864,7 @@ Accept: application/json
 <span class="na">ticketstatus</span><span class="pi">:</span> <span class="s">-2147483648</span>
 <span class="na">solution_owners</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="m">0</span>
+<span class="na">updated_by_user_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 
 </code></pre></div>
 <h3 id="vulnerabilities_export_csv_2-parameters">Parameters</h3>
@@ -37913,6 +38706,101 @@ Accept: application/json
 To perform this operation, you must be authenticated
 </aside>
 <h1 id='schemas'>Schemas</h1>
+<h2 id="tocS_ArsenalVulnerability">ArsenalVulnerability</h2>
+
+<p><a id="schemaarsenalvulnerability"></a>
+<a id="schema_ArsenalVulnerability"></a>
+<a id="tocSarsenalvulnerability"></a>
+<a id="tocsarsenalvulnerability"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"solution_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"solution_effort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cvss_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"solution_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Serializer for Arsenal Vulnerabilities</p>
+<h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>true</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>severity</td>
+<td><a href="#schemaseverityenum">SeverityEnum</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>solution_priority</td>
+<td><a href="#schemasolutionpriorityenum">SolutionPriorityEnum</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>solution_effort</td>
+<td><a href="#schemasolutioneffortenum">SolutionEffortEnum</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>cvss_vector</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>solution_headline</td>
+<td>string¦null</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>solution</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_Asset">Asset</h2>
 
 <p><a id="schemaasset"></a>
@@ -37936,9 +38824,7 @@ To perform this operation, you must be authenticated
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
@@ -37955,12 +38841,13 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>Asset DRF Serializer definition.</p>
-<h3 id='properties'>Properties</h3>
+<h3 id='properties-2'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38070,7 +38957,7 @@ To perform this operation, you must be authenticated
 </tr>
 <tr>
 <td>technologies</td>
-<td>[string]</td>
+<td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>none</td>
@@ -38166,6 +39053,13 @@ To perform this operation, you must be authenticated
 <td>read-only</td>
 <td>none</td>
 </tr>
+<tr>
+<td>monitored_slot_lock_until</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocS_AssetGroup">AssetGroup</h2>
@@ -38199,7 +39093,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>AssetGroup DRF Serializer definition.</p>
-<h3 id='properties-2'>Properties</h3>
+<h3 id='properties-3'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38340,7 +39234,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Asset DRF Serializer definition.</p>
-<h3 id='properties-3'>Properties</h3>
+<h3 id='properties-4'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38506,7 +39400,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>AssetTag DRF Serializer definition.</p>
-<h3 id='properties-4'>Properties</h3>
+<h3 id='properties-5'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38554,7 +39448,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Banner endpoint.</p>
-<h3 id='properties-5'>Properties</h3>
+<h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38604,7 +39498,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-6'>Properties</h3>
+</span></code></pre></div><h3 id='properties-7'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38634,7 +39528,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-7'>Properties</h3>
+</span></code></pre></div><h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38687,7 +39581,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Certificate endpoint.</p>
-<h3 id='properties-8'>Properties</h3>
+<h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38813,7 +39707,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for Certificate endpoint.</p>
-<h3 id='properties-9'>Properties</h3>
+<h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38896,7 +39790,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Control endpoint.</p>
-<h3 id='properties-10'>Properties</h3>
+<h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39054,7 +39948,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Control&#39;s asset</p>
-<h3 id='properties-11'>Properties</h3>
+<h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39113,7 +40007,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Control endpoint.</p>
-<h3 id='properties-12'>Properties</h3>
+<h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39253,7 +40147,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Control&#39;s vulnerability</p>
-<h3 id='properties-13'>Properties</h3>
+<h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39308,7 +40202,7 @@ To perform this operation, you must be authenticated
 <a id="tocscriticalityenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mi">1</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-14'>Properties</h3>
+</span></code></pre></div><h3 id='properties-15'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39365,7 +40259,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>CybelangelConfig serializer definition</p>
-<h3 id='properties-15'>Properties</h3>
+<h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39499,7 +40393,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Domain endpoint.</p>
-<h3 id='properties-16'>Properties</h3>
+<h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39623,7 +40517,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for Domain endpoint.</p>
-<h3 id='properties-17'>Properties</h3>
+<h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39689,7 +40583,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for DomainWhoisRecord endpoint.</p>
-<h3 id='properties-18'>Properties</h3>
+<h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39830,7 +40724,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Comment endpoint.</p>
-<h3 id='properties-19'>Properties</h3>
+<h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39892,7 +40786,7 @@ To perform this operation, you must be authenticated
 <a id="tocsexposureenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"unknown"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-20'>Properties</h3>
+</span></code></pre></div><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -39970,7 +40864,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Alert endpoint.</p>
-<h3 id='properties-21'>Properties</h3>
+<h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40067,7 +40961,7 @@ To perform this operation, you must be authenticated
 <a id="tocsfeedtypeenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"Control"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-22'>Properties</h3>
+</span></code></pre></div><h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40158,7 +41052,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for IPAddress endpoint.</p>
-<h3 id='properties-23'>Properties</h3>
+<h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40276,7 +41170,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for IPAddress endpoint.</p>
-<h3 id='properties-24'>Properties</h3>
+<h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40324,7 +41218,7 @@ To perform this operation, you must be authenticated
 <a id="tocsipaddresstypeenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"ipv4"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-25'>Properties</h3>
+</span></code></pre></div><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40376,7 +41270,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for IPGeneralInfo endpoint.</p>
-<h3 id='properties-26'>Properties</h3>
+<h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40438,7 +41332,7 @@ To perform this operation, you must be authenticated
 <a id="tocslevelenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"Information"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-27'>Properties</h3>
+</span></code></pre></div><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40525,7 +41419,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-28'>Properties</h3>
+</span></code></pre></div><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40601,7 +41495,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-29'>Properties</h3>
+</span></code></pre></div><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40669,9 +41563,7 @@ To perform this operation, you must be authenticated
         </span><span class="mi">0</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
@@ -40688,12 +41580,13 @@ To perform this operation, you must be authenticated
       </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="mi">0</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-30'>Properties</h3>
+</span></code></pre></div><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40752,7 +41645,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-31'>Properties</h3>
+</span></code></pre></div><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40824,7 +41717,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-32'>Properties</h3>
+</span></code></pre></div><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40902,7 +41795,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-33'>Properties</h3>
+</span></code></pre></div><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -40965,7 +41858,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-34'>Properties</h3>
+</span></code></pre></div><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41083,7 +41976,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-35'>Properties</h3>
+</span></code></pre></div><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41145,7 +42038,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-36'>Properties</h3>
+</span></code></pre></div><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41225,7 +42118,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-37'>Properties</h3>
+</span></code></pre></div><h3 id='properties-38'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41322,7 +42215,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-38'>Properties</h3>
+</span></code></pre></div><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41395,7 +42288,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-39'>Properties</h3>
+</span></code></pre></div><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41483,7 +42376,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-40'>Properties</h3>
+</span></code></pre></div><h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41548,7 +42441,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-41'>Properties</h3>
+</span></code></pre></div><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41612,7 +42505,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-42'>Properties</h3>
+</span></code></pre></div><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41687,7 +42580,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-43'>Properties</h3>
+</span></code></pre></div><h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41781,7 +42674,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-44'>Properties</h3>
+</span></code></pre></div><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41844,9 +42737,7 @@ To perform this operation, you must be authenticated
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
@@ -41863,12 +42754,13 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"security_checks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>Asset DRF Serializer definition.</p>
-<h3 id='properties-45'>Properties</h3>
+<h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -41978,7 +42870,7 @@ To perform this operation, you must be authenticated
 </tr>
 <tr>
 <td>technologies</td>
-<td>[string]</td>
+<td>string</td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
@@ -42074,6 +42966,13 @@ To perform this operation, you must be authenticated
 <td>read-only</td>
 <td>none</td>
 </tr>
+<tr>
+<td>monitored_slot_lock_until</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocS_PatchedAssetGroup">PatchedAssetGroup</h2>
@@ -42107,7 +43006,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>AssetGroup DRF Serializer definition.</p>
-<h3 id='properties-46'>Properties</h3>
+<h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -42231,7 +43130,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>AssetTag DRF Serializer definition.</p>
-<h3 id='properties-47'>Properties</h3>
+<h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -42282,7 +43181,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>CybelangelConfig serializer definition</p>
-<h3 id='properties-48'>Properties</h3>
+<h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -42371,7 +43270,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Pentest endpoint.</p>
-<h3 id='properties-49'>Properties</h3>
+<h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -42496,6 +43395,7 @@ To perform this operation, you must be authenticated
 <a id="tocspatchedvulnerability"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_friendly_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"arsenal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -42548,12 +43448,28 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arsenal_vulnerability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_effort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvss_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"last_updated_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-50'>Properties</h3>
+<h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -42566,6 +43482,13 @@ To perform this operation, you must be authenticated
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id</td>
+<td>string</td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
@@ -42824,7 +43747,7 @@ To perform this operation, you must be authenticated
 </tr>
 <tr>
 <td>updated_at</td>
-<td>string(date-time)</td>
+<td>string(date-time)¦null</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -42885,6 +43808,27 @@ To perform this operation, you must be authenticated
 <td>read-only</td>
 <td>none</td>
 </tr>
+<tr>
+<td>arsenal_vulnerability</td>
+<td><a href="#schemaarsenalvulnerability">ArsenalVulnerability</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>Serializer for Arsenal Vulnerabilities</td>
+</tr>
+<tr>
+<td>last_updated_by</td>
+<td><a href="#schemavulnerabilityuser">VulnerabilityUser</a></td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>updated_by_user_at</td>
+<td>string(date-time)¦null</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocS_Patchedbulk_update_vulns_status">Patchedbulk_update_vulns_status</h2>
@@ -42900,7 +43844,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-51'>Properties</h3>
+</span></code></pre></div><h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -42940,7 +43884,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"is_monitored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-52'>Properties</h3>
+</span></code></pre></div><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43001,7 +43945,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Pentest endpoint.</p>
-<h3 id='properties-53'>Properties</h3>
+<h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43161,7 +44105,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Port endpoint.</p>
-<h3 id='properties-54'>Properties</h3>
+<h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43268,7 +44212,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite serializer for Port endpoint.</p>
-<h3 id='properties-55'>Properties</h3>
+<h3 id='properties-56'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43337,7 +44281,7 @@ To perform this operation, you must be authenticated
 <a id="tocsprotocolenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"tcp"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-56'>Properties</h3>
+</span></code></pre></div><h3 id='properties-57'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43392,7 +44336,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Retest endpoint.</p>
-<h3 id='properties-57'>Properties</h3>
+<h3 id='properties-58'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43475,7 +44419,7 @@ To perform this operation, you must be authenticated
 <a id="tocsreteststatusenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"none"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-58'>Properties</h3>
+</span></code></pre></div><h3 id='properties-59'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43538,7 +44482,7 @@ To perform this operation, you must be authenticated
 <a id="tocsseverityenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mi">0</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-59'>Properties</h3>
+</span></code></pre></div><h3 id='properties-60'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43593,7 +44537,7 @@ To perform this operation, you must be authenticated
 <a id="tocssolutioneffortenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"low"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-60'>Properties</h3>
+</span></code></pre></div><h3 id='properties-61'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43640,7 +44584,7 @@ To perform this operation, you must be authenticated
 <a id="tocssolutionpriorityenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"urgent"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-61'>Properties</h3>
+</span></code></pre></div><h3 id='properties-62'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43687,7 +44631,7 @@ To perform this operation, you must be authenticated
 <a id="tocsstateenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"open"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-62'>Properties</h3>
+</span></code></pre></div><h3 id='properties-63'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43738,7 +44682,7 @@ To perform this operation, you must be authenticated
 <a id="tocsstatus0cbenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"new"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-63'>Properties</h3>
+</span></code></pre></div><h3 id='properties-64'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43815,7 +44759,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-64'>Properties</h3>
+</span></code></pre></div><h3 id='properties-65'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43853,7 +44797,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Ticket endpoint.</p>
-<h3 id='properties-65'>Properties</h3>
+<h3 id='properties-66'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43929,7 +44873,7 @@ To perform this operation, you must be authenticated
 <a id="tocsticketstatusenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mi">0</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-66'>Properties</h3>
+</span></code></pre></div><h3 id='properties-67'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -43992,7 +44936,7 @@ To perform this operation, you must be authenticated
 <a id="tocstypedd0enum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"ip"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-67'>Properties</h3>
+</span></code></pre></div><h3 id='properties-68'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44055,6 +44999,7 @@ To perform this operation, you must be authenticated
 <a id="tocsvulnerability"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_friendly_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"arsenal_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2147483648</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -44107,12 +45052,28 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"solution_owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"arsenal_vulnerability"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_priority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urgent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_effort"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvss_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution_headline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"last_updated_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"updated_by_user_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-68'>Properties</h3>
+<h3 id='properties-69'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44125,6 +45086,13 @@ To perform this operation, you must be authenticated
 <tr>
 <td>id</td>
 <td>integer</td>
+<td>true</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>user_friendly_id</td>
+<td>string</td>
 <td>true</td>
 <td>read-only</td>
 <td>none</td>
@@ -44383,7 +45351,7 @@ To perform this operation, you must be authenticated
 </tr>
 <tr>
 <td>updated_at</td>
-<td>string(date-time)</td>
+<td>string(date-time)¦null</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -44444,6 +45412,27 @@ To perform this operation, you must be authenticated
 <td>read-only</td>
 <td>none</td>
 </tr>
+<tr>
+<td>arsenal_vulnerability</td>
+<td><a href="#schemaarsenalvulnerability">ArsenalVulnerability</a></td>
+<td>true</td>
+<td>read-only</td>
+<td>Serializer for Arsenal Vulnerabilities</td>
+</tr>
+<tr>
+<td>last_updated_by</td>
+<td><a href="#schemavulnerabilityuser">VulnerabilityUser</a></td>
+<td>true</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>updated_by_user_at</td>
+<td>string(date-time)¦null</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocS_VulnerabilityLite">VulnerabilityLite</h2>
@@ -44476,7 +45465,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-69'>Properties</h3>
+<h3 id='properties-70'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44621,6 +45610,43 @@ To perform this operation, you must be authenticated
 </tr>
 </tbody></table>
 
+<h2 id="tocS_VulnerabilityUser">VulnerabilityUser</h2>
+
+<p><a id="schemavulnerabilityuser"></a>
+<a id="schema_VulnerabilityUser"></a>
+<a id="tocSvulnerabilityuser"></a>
+<a id="tocsvulnerabilityuser"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-71'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>true</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string(email)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_WebPortLite">WebPortLite</h2>
 
 <p><a id="schemawebportlite"></a>
@@ -44646,7 +45672,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite serializer for Port endpoint.</p>
-<h3 id='properties-70'>Properties</h3>
+<h3 id='properties-72'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44756,7 +45782,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for WebServer endpoint.</p>
-<h3 id='properties-71'>Properties</h3>
+<h3 id='properties-73'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44916,7 +45942,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for WebServer endpoint.</p>
-<h3 id='properties-72'>Properties</h3>
+<h3 id='properties-74'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44968,7 +45994,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-73'>Properties</h3>
+</span></code></pre></div><h3 id='properties-75'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44999,7 +46025,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-74'>Properties</h3>
+</span></code></pre></div><h3 id='properties-76'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45028,7 +46054,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-75'>Properties</h3>
+</span></code></pre></div><h3 id='properties-77'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45062,7 +46088,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"exposure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-76'>Properties</h3>
+</span></code></pre></div><h3 id='properties-78'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45131,7 +46157,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-77'>Properties</h3>
+</span></code></pre></div><h3 id='properties-79'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45167,7 +46193,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-78'>Properties</h3>
+</span></code></pre></div><h3 id='properties-80'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45197,7 +46223,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-79'>Properties</h3>
+</span></code></pre></div><h3 id='properties-81'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
