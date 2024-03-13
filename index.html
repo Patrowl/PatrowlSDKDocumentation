@@ -660,9 +660,6 @@
                     <a href="#itsm_snow_tablenames_retrieve" class="toc-h2 toc-link" data-title="itsm_snow_tablenames_retrieve">itsm_snow_tablenames_retrieve</a>
                   </li>
                   <li>
-                    <a href="#itsm_sync_ugm_retrieve" class="toc-h2 toc-link" data-title="itsm_sync_ugm_retrieve">itsm_sync_ugm_retrieve</a>
-                  </li>
-                  <li>
                     <a href="#itsm_tickets_retrieve" class="toc-h2 toc-link" data-title="itsm_tickets_retrieve">itsm_tickets_retrieve</a>
                   </li>
                   <li>
@@ -676,9 +673,6 @@
                   </li>
                   <li>
                     <a href="#itsm_tickets_status_retrieve_2" class="toc-h2 toc-link" data-title="itsm_tickets_status_retrieve_2">itsm_tickets_status_retrieve_2</a>
-                  </li>
-                  <li>
-                    <a href="#itsm_tickets_sync_retrieve" class="toc-h2 toc-link" data-title="itsm_tickets_sync_retrieve">itsm_tickets_sync_retrieve</a>
                   </li>
                   <li>
                     <a href="#itsm_users_retrieve" class="toc-h2 toc-link" data-title="itsm_users_retrieve">itsm_users_retrieve</a>
@@ -749,6 +743,9 @@
                   </li>
                   <li>
                     <a href="#pentests_org_export_csv_retrieve" class="toc-h2 toc-link" data-title="pentests_org_export_csv_retrieve">pentests_org_export_csv_retrieve</a>
+                  </li>
+                  <li>
+                    <a href="#pentests_org_export_csv_create" class="toc-h2 toc-link" data-title="pentests_org_export_csv_create">pentests_org_export_csv_create</a>
                   </li>
               </ul>
           </li>
@@ -987,6 +984,9 @@
                   </li>
                   <li>
                     <a href="#tocS_LevelEnum" class="toc-h2 toc-link" data-title="LevelEnum">LevelEnum</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_LivenessEnum" class="toc-h2 toc-link" data-title="LivenessEnum">LivenessEnum</a>
                   </li>
                   <li>
                     <a href="#tocS_PaginatedAssetGroupList" class="toc-h2 toc-link" data-title="PaginatedAssetGroupList">PaginatedAssetGroupList</a>
@@ -3161,18 +3161,18 @@ Accept: application/json
 <td>none</td>
 </tr>
 <tr>
-<td>is_up</td>
-<td>query</td>
-<td>boolean</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
 <td>limit</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
 <td>Number of results to return per page.</td>
+</tr>
+<tr>
+<td>liveness</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
 </tr>
 <tr>
 <td>page</td>
@@ -3210,6 +3210,18 @@ Accept: application/json
 <th>Value</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>liveness</td>
+<td>down</td>
+</tr>
+<tr>
+<td>liveness</td>
+<td>unknown</td>
+</tr>
+<tr>
+<td>liveness</td>
+<td>up</td>
+</tr>
 <tr>
 <td>sorted_by</td>
 <td>-address</td>
@@ -3275,7 +3287,7 @@ Accept: application/json
       </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipv4"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"in_blacklist"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"general_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -3493,7 +3505,7 @@ Accept: application/json
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipv4"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"in_blacklist"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"general_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5324,18 +5336,18 @@ Accept: application/json
 <td>none</td>
 </tr>
 <tr>
-<td>is_up</td>
-<td>query</td>
-<td>boolean</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
 <td>limit</td>
 <td>query</td>
 <td>integer</td>
 <td>false</td>
 <td>Number of results to return per page.</td>
+</tr>
+<tr>
+<td>liveness</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
 </tr>
 <tr>
 <td>not_asset_owner</td>
@@ -5620,7 +5632,7 @@ Accept: application/json
       </span><span class="nl">"last_checked_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5874,8 +5886,9 @@ Accept: application/json
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"has_webservers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_create-responses">Responses</h3>
@@ -6349,8 +6362,9 @@ Accept: application/json
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"has_webservers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_retrieve-responses">Responses</h3>
@@ -6623,8 +6637,9 @@ Accept: application/json
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"has_webservers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_create_2-responses">Responses</h3>
@@ -6905,8 +6920,9 @@ Accept: application/json
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"has_webservers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_partial_update-responses">Responses</h3>
@@ -9736,8 +9752,9 @@ Accept: application/json
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"has_webservers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_export_csv_create-responses">Responses</h3>
@@ -9923,8 +9940,9 @@ Accept: application/json
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"has_webservers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="assets_export_json_retrieve-responses">Responses</h3>
@@ -15901,7 +15919,7 @@ Accept: application/json
 <td>A page number within the paginated result set.</td>
 </tr>
 <tr>
-<td>product</td>
+<td>products</td>
 <td>query</td>
 <td>string</td>
 <td>false</td>
@@ -23288,156 +23306,6 @@ Raises:
 <aside class="warning">
 To perform this operation, you must be authenticated
 </aside>
-<h2 id='itsm_sync_ugm_retrieve'>itsm_sync_ugm_retrieve</h2>
-<p><a id="opIditsm_sync_ugm_retrieve"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET /api/auth/itsm/sync_ugm/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/auth/itsm/sync_ugm/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
-<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Token 1234567890abcefghijklmnopqrstuvwxyz12345</span><span class="dl">'</span>
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/auth/itsm/sync_ugm/</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-<span class="nb">require</span> <span class="s1">'json'</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
-<span class="p">}</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'/api/auth/itsm/sync_ugm/'</span><span class="p">,</span>
-  <span class="ss">params: </span><span class="p">{</span>
-  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
-
-<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'/api/auth/itsm/sync_ugm/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-
-<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
-
-<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span><span class="p">,</span>
-<span class="p">);</span>
-
-<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
-
-<span class="c1">// Define array of request body.</span>
-<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-
-<span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'/api/auth/itsm/sync_ugm/'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
-        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
-       <span class="p">)</span>
-    <span class="p">);</span>
-    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">());</span>
- <span class="p">}</span>
- <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// handle exception or api errors.</span>
-    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">());</span>
- <span class="p">}</span>
-
- <span class="c1">// ...</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"/api/auth/itsm/sync_ugm/"</span><span class="o">);</span>
-<span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
-<span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
-    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
-<span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
-<span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
-<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-       <span class="s">"bytes"</span>
-       <span class="s">"net/http"</span>
-<span class="p">)</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Token 1234567890abcefghijklmnopqrstuvwxyz12345"</span><span class="p">},</span>
-    <span class="p">}</span>
-
-    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/auth/itsm/sync_ugm/"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
-
-    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
-    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
-    <span class="c">// ...</span>
-<span class="p">}</span>
-
-</code></pre></div>
-<p><code>GET /api/auth/itsm/sync_ugm/</code></p>
-
-<p>Get and localy cache ITSM users, groups...</p>
-
-<p>Args:
-    request (rest_framework.request.Request): request metadatas but not used
-Returns:
-    JsonResponse: Json dict with the following content:
-        * status (str) -- error or success
-        * reason (str) -- the reason of the status
-Raises:
-    No raise</p>
-
-<h3 id="itsm_sync_ugm_retrieve-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>No response body</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-To perform this operation, you must be authenticated
-</aside>
 <h2 id='itsm_tickets_retrieve'>itsm_tickets_retrieve</h2>
 <p><a id="opIditsm_tickets_retrieve"></a></p>
 
@@ -24334,158 +24202,6 @@ Raises:
 </tbody></table>
 
 <h3 id="itsm_tickets_status_retrieve_2-responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Meaning</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>No response body</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-To perform this operation, you must be authenticated
-</aside>
-<h2 id='itsm_tickets_sync_retrieve'>itsm_tickets_sync_retrieve</h2>
-<p><a id="opIditsm_tickets_sync_retrieve"></a></p>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET /api/auth/itsm/tickets/sync/ <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/auth/itsm/tickets/sync/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
-<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Token 1234567890abcefghijklmnopqrstuvwxyz12345</span><span class="dl">'</span>
-<span class="p">};</span>
-
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/auth/itsm/tickets/sync/</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
-<span class="p">})</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-<span class="p">});</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
-<span class="nb">require</span> <span class="s1">'json'</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
-<span class="p">}</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">get</span> <span class="s1">'/api/auth/itsm/tickets/sync/'</span><span class="p">,</span>
-  <span class="ss">params: </span><span class="p">{</span>
-  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
-
-<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
-<span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'/api/auth/itsm/tickets/sync/'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
-
-<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
-
-<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span><span class="p">,</span>
-<span class="p">);</span>
-
-<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
-
-<span class="c1">// Define array of request body.</span>
-<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-
-<span class="k">try</span> <span class="p">{</span>
-    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span><span class="s1">'/api/auth/itsm/tickets/sync/'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
-        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
-       <span class="p">)</span>
-    <span class="p">);</span>
-    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">());</span>
- <span class="p">}</span>
- <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// handle exception or api errors.</span>
-    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">());</span>
- <span class="p">}</span>
-
- <span class="c1">// ...</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"/api/auth/itsm/tickets/sync/"</span><span class="o">);</span>
-<span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
-<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
-<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
-<span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
-    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
-<span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
-<span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
-<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-       <span class="s">"bytes"</span>
-       <span class="s">"net/http"</span>
-<span class="p">)</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Token 1234567890abcefghijklmnopqrstuvwxyz12345"</span><span class="p">},</span>
-    <span class="p">}</span>
-
-    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
-    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/auth/itsm/tickets/sync/"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
-
-    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
-    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
-    <span class="c">// ...</span>
-<span class="p">}</span>
-
-</code></pre></div>
-<p><code>GET /api/auth/itsm/tickets/sync/</code></p>
-
-<p>Synchronize local tickets status of all organizations from remote external ITSM.
-This API should not be called, it only to test/force the sync :)</p>
-
-<p>Args:
-    request (rest_framework.request.Request): request metadatas that contains
-        * org_id (str) -- The organization id as a query string/parameter as an integer in a string (?org_id=123)
-Returns:
-    JsonResponse: Json dict with the following content:
-        * status (str) -- error or success
-        * reason (str) -- the reason of the status
-Raises:
-    No raise</p>
-
-<h3 id="itsm_tickets_sync_retrieve-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -26143,7 +25859,7 @@ Accept: application/json
       </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -26187,7 +25903,6 @@ Content-Type: application/json
 Accept: application/json
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "requested_by": "string",
   "title": "string",
   "provider": "string",
   "organization": 0,
@@ -26198,9 +25913,7 @@ Accept: application/json
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_greybox": true,
-  "suborganizations": [
-    0
-  ]
+  "suborganization": 0
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -26323,7 +26036,6 @@ Accept: application/json
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"requested_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -26334,12 +26046,9 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">requested_by</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">provider</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">organization</span><span class="pi">:</span> <span class="m">0</span>
 <span class="na">description</span><span class="pi">:</span> <span class="s">string</span>
@@ -26349,8 +26058,7 @@ Accept: application/json
 <span class="na">created_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">updated_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">is_greybox</span><span class="pi">:</span> <span class="no">true</span>
-<span class="na">suborganizations</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
+<span class="na">suborganization</span><span class="pi">:</span> <span class="m">0</span>
 
 </code></pre></div>
 <h3 id="pentests_create-parameters">Parameters</h3>
@@ -26393,7 +26101,7 @@ Accept: application/json
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="pentests_create-responses">Responses</h3>
@@ -26726,7 +26434,7 @@ Accept: application/json
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="pentests_retrieve-responses">Responses</h3>
@@ -26768,7 +26476,6 @@ Content-Type: application/json
 Accept: application/json
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "requested_by": "string",
   "title": "string",
   "provider": "string",
   "organization": 0,
@@ -26779,9 +26486,7 @@ Accept: application/json
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_greybox": true,
-  "suborganizations": [
-    0
-  ]
+  "suborganization": 0
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -26904,7 +26609,6 @@ Accept: application/json
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"requested_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -26915,12 +26619,9 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">requested_by</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">provider</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">organization</span><span class="pi">:</span> <span class="m">0</span>
 <span class="na">description</span><span class="pi">:</span> <span class="s">string</span>
@@ -26930,8 +26631,7 @@ Accept: application/json
 <span class="na">created_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">updated_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">is_greybox</span><span class="pi">:</span> <span class="no">true</span>
-<span class="na">suborganizations</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
+<span class="na">suborganization</span><span class="pi">:</span> <span class="m">0</span>
 
 </code></pre></div>
 <h3 id="pentests_partial_update-parameters">Parameters</h3>
@@ -26981,7 +26681,7 @@ Accept: application/json
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="pentests_partial_update-responses">Responses</h3>
@@ -27334,7 +27034,7 @@ Accept: application/json
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="pentests_assets_export_csv_retrieve-responses">Responses</h3>
@@ -27376,7 +27076,6 @@ Content-Type: application/json
 Accept: application/json
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "requested_by": "string",
   "title": "string",
   "provider": "string",
   "organization": 0,
@@ -27387,9 +27086,7 @@ Accept: application/json
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_greybox": true,
-  "suborganizations": [
-    0
-  ]
+  "suborganization": 0
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -27529,7 +27226,6 @@ Accept: application/json
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"requested_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -27540,12 +27236,9 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">requested_by</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">provider</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">organization</span><span class="pi">:</span> <span class="m">0</span>
 <span class="na">description</span><span class="pi">:</span> <span class="s">string</span>
@@ -27555,8 +27248,7 @@ Accept: application/json
 <span class="na">created_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">updated_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">is_greybox</span><span class="pi">:</span> <span class="no">true</span>
-<span class="na">suborganizations</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
+<span class="na">suborganization</span><span class="pi">:</span> <span class="m">0</span>
 
 </code></pre></div>
 <h3 id="pentest_assets_import_assets_from_csv-parameters">Parameters</h3>
@@ -27653,7 +27345,6 @@ Content-Type: application/json
 Accept: application/json
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "requested_by": "string",
   "title": "string",
   "provider": "string",
   "organization": 0,
@@ -27664,9 +27355,7 @@ Accept: application/json
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_greybox": true,
-  "suborganizations": [
-    0
-  ]
+  "suborganization": 0
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -27789,7 +27478,6 @@ Accept: application/json
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"requested_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -27800,12 +27488,9 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">requested_by</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">provider</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">organization</span><span class="pi">:</span> <span class="m">0</span>
 <span class="na">description</span><span class="pi">:</span> <span class="s">string</span>
@@ -27815,8 +27500,7 @@ Accept: application/json
 <span class="na">created_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">updated_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">is_greybox</span><span class="pi">:</span> <span class="no">true</span>
-<span class="na">suborganizations</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
+<span class="na">suborganization</span><span class="pi">:</span> <span class="m">0</span>
 
 </code></pre></div>
 <h3 id="pentest_remove_assets-parameters">Parameters</h3>
@@ -28080,7 +27764,7 @@ Accept: application/json
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="pentests_vulns_export_csv_retrieve-responses">Responses</h3>
@@ -28122,7 +27806,6 @@ Content-Type: application/json
 Accept: application/json
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "requested_by": "string",
   "title": "string",
   "provider": "string",
   "organization": 0,
@@ -28133,9 +27816,7 @@ Accept: application/json
   "created_at": "2019-08-24T14:15:22Z",
   "updated_at": "2019-08-24T14:15:22Z",
   "is_greybox": true,
-  "suborganizations": [
-    0
-  ]
+  "suborganization": 0
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -28258,7 +27939,6 @@ Accept: application/json
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"requested_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -28269,12 +27949,9 @@ Accept: application/json
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">0</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">requested_by</span><span class="pi">:</span> <span class="s">string</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">provider</span><span class="pi">:</span> <span class="s">string</span>
 <span class="na">organization</span><span class="pi">:</span> <span class="m">0</span>
 <span class="na">description</span><span class="pi">:</span> <span class="s">string</span>
@@ -28284,8 +27961,7 @@ Accept: application/json
 <span class="na">created_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">updated_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
 <span class="na">is_greybox</span><span class="pi">:</span> <span class="no">true</span>
-<span class="na">suborganizations</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="m">0</span>
+<span class="na">suborganization</span><span class="pi">:</span> <span class="m">0</span>
 
 </code></pre></div>
 <h3 id="pentests_vulns_import_csv_create-parameters">Parameters</h3>
@@ -28335,7 +28011,7 @@ Accept: application/json
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="pentests_vulns_import_csv_create-responses">Responses</h3>
@@ -28527,10 +28203,257 @@ Accept: application/json
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="pentests_org_export_csv_retrieve-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>none</td>
+<td><a href="#schemapentest">Pentest</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated
+</aside>
+<h2 id='pentests_org_export_csv_create'>pentests_org_export_csv_create</h2>
+<p><a id="opIdpentests_org_export_csv_create"></a></p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> POST /api/auth/pentests/org/<span class="o">{</span>org_id<span class="o">}</span>/export/csv <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/auth/pentests/org/{org_id}/export/csv</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+
+Content-Type: application/json
+Accept: application/json
+
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
+  "title": "string",
+  "provider": "string",
+  "organization": 0,
+  "description": "string",
+  "comments": "string",
+  "date_from": "2019-08-24T14:15:22Z",
+  "date_to": "2019-08-24T14:15:22Z",
+  "created_at": "2019-08-24T14:15:22Z",
+  "updated_at": "2019-08-24T14:15:22Z",
+  "is_greybox": true,
+  "suborganization": 0
+}</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Token 1234567890abcefghijklmnopqrstuvwxyz12345</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/auth/pentests/org/{org_id}/export/csv</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'rest-client'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+<span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'/api/auth/pentests/org/{org_id}/export/csv'</span><span class="p">,</span>
+  <span class="ss">params: </span><span class="p">{</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+
+<span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
+<span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'/api/auth/pentests/org/{org_id}/export/csv'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="k">require</span> <span class="s1">'vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="c1">// Define array of request body.</span>
+<span class="nv">$request_body</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">request</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span><span class="s1">'/api/auth/pentests/org/{org_id}/export/csv'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'headers'</span> <span class="o">=&gt;</span> <span class="nv">$headers</span><span class="p">,</span>
+        <span class="s1">'json'</span> <span class="o">=&gt;</span> <span class="nv">$request_body</span><span class="p">,</span>
+       <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">getContents</span><span class="p">());</span>
+ <span class="p">}</span>
+ <span class="k">catch</span> <span class="p">(</span><span class="err">\</span><span class="nc">GuzzleHttp\Exception\BadResponseException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle exception or api errors.</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">());</span>
+ <span class="p">}</span>
+
+ <span class="c1">// ...</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"/api/auth/pentests/org/{org_id}/export/csv"</span><span class="o">);</span>
+<span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+<span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+<span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+<span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+<span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+       <span class="s">"bytes"</span>
+       <span class="s">"net/http"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+        <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+        <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Token 1234567890abcefghijklmnopqrstuvwxyz12345"</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
+    <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/api/auth/pentests/org/{org_id}/export/csv"</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">Header</span> <span class="o">=</span> <span class="n">headers</span>
+
+    <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span><span class="p">{}</span>
+    <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+    <span class="c">// ...</span>
+<span class="p">}</span>
+
+</code></pre></div>
+<p><code>POST /api/auth/pentests/org/{org_id}/export/csv</code></p>
+
+<p>Export pentest data as CSV content.</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">title</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">provider</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">organization</span><span class="pi">:</span> <span class="m">0</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">comments</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">date_from</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
+<span class="na">date_to</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
+<span class="na">created_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
+<span class="na">updated_at</span><span class="pi">:</span> <span class="s">2019-08-24T14:15:22Z</span>
+<span class="na">is_greybox</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">suborganization</span><span class="pi">:</span> <span class="m">0</span>
+
+</code></pre></div>
+<h3 id="pentests_org_export_csv_create-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>org_id</td>
+<td>path</td>
+<td>integer</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemapentest">Pentest</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requested_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="pentests_org_export_csv_create-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -41138,8 +41061,9 @@ To perform this operation, you must be authenticated
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"has_webservers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -41351,14 +41275,21 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 <tr>
-<td>is_up</td>
-<td>boolean</td>
+<td>liveness</td>
+<td><a href="#schemalivenessenum">LivenessEnum</a></td>
 <td>true</td>
 <td>read-only</td>
 <td>none</td>
 </tr>
 <tr>
 <td>www_related_domain</td>
+<td>string</td>
+<td>true</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>has_webservers</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
@@ -41542,7 +41473,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"last_checked_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -41698,8 +41629,8 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 <tr>
-<td>is_up</td>
-<td>boolean</td>
+<td>liveness</td>
+<td><a href="#schemalivenessenum">LivenessEnum</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -43563,7 +43494,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipv4"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"in_blacklist"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"general_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -43643,8 +43574,8 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 <tr>
-<td>is_up</td>
-<td>boolean</td>
+<td>liveness</td>
+<td><a href="#schemalivenessenum">LivenessEnum</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -43935,6 +43866,53 @@ To perform this operation, you must be authenticated
 </tr>
 </tbody></table>
 
+<h2 id="tocS_LivenessEnum">LivenessEnum</h2>
+
+<p><a id="schemalivenessenum"></a>
+<a id="schema_LivenessEnum"></a>
+<a id="tocSlivenessenum"></a>
+<a id="tocslivenessenum"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"unknown"</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-30'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>unknown</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>up</td>
+</tr>
+<tr>
+<td><em>anonymous</em></td>
+<td>down</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_PaginatedAssetGroupList">PaginatedAssetGroupList</h2>
 
 <p><a id="schemapaginatedassetgrouplist"></a>
@@ -43972,7 +43950,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-30'>Properties</h3>
+</span></code></pre></div><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44044,12 +44022,12 @@ To perform this operation, you must be authenticated
       </span><span class="nl">"last_checked_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"score_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"asset_owners"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-31'>Properties</h3>
+</span></code></pre></div><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44108,7 +44086,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-32'>Properties</h3>
+</span></code></pre></div><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44180,7 +44158,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-33'>Properties</h3>
+</span></code></pre></div><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44258,7 +44236,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-34'>Properties</h3>
+</span></code></pre></div><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44321,7 +44299,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-35'>Properties</h3>
+</span></code></pre></div><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44439,7 +44417,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-36'>Properties</h3>
+</span></code></pre></div><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44503,7 +44481,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-37'>Properties</h3>
+</span></code></pre></div><h3 id='properties-38'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44583,7 +44561,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-38'>Properties</h3>
+</span></code></pre></div><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44639,7 +44617,7 @@ To perform this operation, you must be authenticated
       </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipv4"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"in_blacklist"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"general_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -44680,7 +44658,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-39'>Properties</h3>
+</span></code></pre></div><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44746,15 +44724,13 @@ To perform this operation, you must be authenticated
       </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="mi">0</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-40'>Properties</h3>
+</span></code></pre></div><h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44842,7 +44818,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-41'>Properties</h3>
+</span></code></pre></div><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44907,7 +44883,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-42'>Properties</h3>
+</span></code></pre></div><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44971,7 +44947,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-43'>Properties</h3>
+</span></code></pre></div><h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45050,7 +45026,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-44'>Properties</h3>
+</span></code></pre></div><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45144,7 +45120,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-45'>Properties</h3>
+</span></code></pre></div><h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45225,13 +45201,14 @@ To perform this operation, you must be authenticated
     </span><span class="mi">0</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"monitored_slot_lock_until"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"is_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"liveness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"www_related_domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"has_webservers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>Asset DRF Serializer definition.</p>
-<h3 id='properties-46'>Properties</h3>
+<h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45438,14 +45415,21 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 <tr>
-<td>is_up</td>
-<td>boolean</td>
+<td>liveness</td>
+<td><a href="#schemalivenessenum">LivenessEnum</a></td>
 <td>false</td>
 <td>read-only</td>
 <td>none</td>
 </tr>
 <tr>
 <td>www_related_domain</td>
+<td>string</td>
+<td>false</td>
+<td>read-only</td>
+<td>none</td>
+</tr>
+<tr>
+<td>has_webservers</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -45485,7 +45469,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>AssetGroup DRF Serializer definition.</p>
-<h3 id='properties-47'>Properties</h3>
+<h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45616,7 +45600,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>AssetTag DRF Serializer definition.</p>
-<h3 id='properties-48'>Properties</h3>
+<h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45667,7 +45651,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>CybelangelConfig serializer definition</p>
-<h3 id='properties-49'>Properties</h3>
+<h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45749,15 +45733,13 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">0</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>Serializer for Pentest endpoint.</p>
-<h3 id='properties-50'>Properties</h3>
+<h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45778,7 +45760,7 @@ To perform this operation, you must be authenticated
 <td>requested_by</td>
 <td>string¦null</td>
 <td>false</td>
-<td>none</td>
+<td>read-only</td>
 <td>none</td>
 </tr>
 <tr>
@@ -45866,14 +45848,14 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 <tr>
-<td>suborganizations</td>
-<td>[integer]</td>
+<td>suborganization</td>
+<td>integer</td>
 <td>false</td>
 <td>write-only</td>
 <td>none</td>
 </tr>
 <tr>
-<td>pentest_suborganizations</td>
+<td>pentest_suborganization</td>
 <td>string</td>
 <td>false</td>
 <td>read-only</td>
@@ -45964,7 +45946,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-51'>Properties</h3>
+<h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46346,7 +46328,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-52'>Properties</h3>
+</span></code></pre></div><h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46386,7 +46368,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"is_monitored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-53'>Properties</h3>
+</span></code></pre></div><h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46440,15 +46422,13 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"nb_vulns"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nb_assets"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"is_greybox"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="mi">0</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"pentest_suborganizations"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pentest_suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 <p>Serializer for Pentest endpoint.</p>
-<h3 id='properties-54'>Properties</h3>
+<h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46468,8 +46448,8 @@ To perform this operation, you must be authenticated
 <tr>
 <td>requested_by</td>
 <td>string¦null</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>read-only</td>
 <td>none</td>
 </tr>
 <tr>
@@ -46557,14 +46537,14 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 <tr>
-<td>suborganizations</td>
-<td>[integer]</td>
+<td>suborganization</td>
+<td>integer</td>
 <td>false</td>
 <td>write-only</td>
 <td>none</td>
 </tr>
 <tr>
-<td>pentest_suborganizations</td>
+<td>pentest_suborganization</td>
 <td>string</td>
 <td>true</td>
 <td>read-only</td>
@@ -46615,7 +46595,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Port endpoint.</p>
-<h3 id='properties-55'>Properties</h3>
+<h3 id='properties-56'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46722,7 +46702,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite serializer for Port endpoint.</p>
-<h3 id='properties-56'>Properties</h3>
+<h3 id='properties-57'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46791,7 +46771,7 @@ To perform this operation, you must be authenticated
 <a id="tocsprotocolenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"tcp"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-57'>Properties</h3>
+</span></code></pre></div><h3 id='properties-58'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46809,7 +46789,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -46846,7 +46826,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Retest endpoint.</p>
-<h3 id='properties-58'>Properties</h3>
+<h3 id='properties-59'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46929,7 +46909,7 @@ To perform this operation, you must be authenticated
 <a id="tocsreteststatusenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"none"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-59'>Properties</h3>
+</span></code></pre></div><h3 id='properties-60'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46947,7 +46927,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -46992,7 +46972,7 @@ To perform this operation, you must be authenticated
 <a id="tocsseverityenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mi">0</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-60'>Properties</h3>
+</span></code></pre></div><h3 id='properties-61'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47010,7 +46990,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -47047,7 +47027,7 @@ To perform this operation, you must be authenticated
 <a id="tocssolutioneffortenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"low"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-61'>Properties</h3>
+</span></code></pre></div><h3 id='properties-62'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47065,7 +47045,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -47094,7 +47074,7 @@ To perform this operation, you must be authenticated
 <a id="tocssolutionpriorityenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"urgent"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-62'>Properties</h3>
+</span></code></pre></div><h3 id='properties-63'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47112,7 +47092,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -47141,7 +47121,7 @@ To perform this operation, you must be authenticated
 <a id="tocsstateenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"open"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-63'>Properties</h3>
+</span></code></pre></div><h3 id='properties-64'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47159,7 +47139,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -47192,7 +47172,7 @@ To perform this operation, you must be authenticated
 <a id="tocsstatus0cbenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"new"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-64'>Properties</h3>
+</span></code></pre></div><h3 id='properties-65'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47210,7 +47190,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -47269,7 +47249,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-65'>Properties</h3>
+</span></code></pre></div><h3 id='properties-66'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47307,7 +47287,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Ticket endpoint.</p>
-<h3 id='properties-66'>Properties</h3>
+<h3 id='properties-67'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47383,7 +47363,7 @@ To perform this operation, you must be authenticated
 <a id="tocsticketstatusenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mi">0</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-67'>Properties</h3>
+</span></code></pre></div><h3 id='properties-68'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47401,7 +47381,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -47446,7 +47426,7 @@ To perform this operation, you must be authenticated
 <a id="tocstypedd0enum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"ip"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-68'>Properties</h3>
+</span></code></pre></div><h3 id='properties-69'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47464,7 +47444,7 @@ To perform this operation, you must be authenticated
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -47584,7 +47564,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-69'>Properties</h3>
+<h3 id='properties-70'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47987,7 +47967,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-70'>Properties</h3>
+<h3 id='properties-71'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48171,7 +48151,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-71'>Properties</h3>
+</span></code></pre></div><h3 id='properties-72'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48222,7 +48202,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite serializer for Port endpoint.</p>
-<h3 id='properties-72'>Properties</h3>
+<h3 id='properties-73'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48332,7 +48312,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for WebServer endpoint.</p>
-<h3 id='properties-73'>Properties</h3>
+<h3 id='properties-74'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48492,7 +48472,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for WebServer endpoint.</p>
-<h3 id='properties-74'>Properties</h3>
+<h3 id='properties-75'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48544,7 +48524,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-75'>Properties</h3>
+</span></code></pre></div><h3 id='properties-76'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48575,7 +48555,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-76'>Properties</h3>
+</span></code></pre></div><h3 id='properties-77'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48604,7 +48584,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-77'>Properties</h3>
+</span></code></pre></div><h3 id='properties-78'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48638,7 +48618,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"exposure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-78'>Properties</h3>
+</span></code></pre></div><h3 id='properties-79'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48707,7 +48687,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-79'>Properties</h3>
+</span></code></pre></div><h3 id='properties-80'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48743,7 +48723,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-80'>Properties</h3>
+</span></code></pre></div><h3 id='properties-81'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48773,7 +48753,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-81'>Properties</h3>
+</span></code></pre></div><h3 id='properties-82'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
