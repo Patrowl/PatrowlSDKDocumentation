@@ -986,6 +986,9 @@
                     <a href="#tocS_IPGeneralInfo" class="toc-h2 toc-link" data-title="IPGeneralInfo">IPGeneralInfo</a>
                   </li>
                   <li>
+                    <a href="#tocS_ImportCSVAsset" class="toc-h2 toc-link" data-title="ImportCSVAsset">ImportCSVAsset</a>
+                  </li>
+                  <li>
                     <a href="#tocS_LevelEnum" class="toc-h2 toc-link" data-title="LevelEnum">LevelEnum</a>
                   </li>
                   <li>
@@ -13865,19 +13868,20 @@ To perform this operation, you must be authenticated
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth/assets/import?org_id<span class="o">=</span>0 <span class="se">\</span>
+curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth/assets/import <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://dashboard.cloud.patrowl.io/api/auth/assets/import?org_id=0</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://dashboard.cloud.patrowl.io/api/auth/assets/import</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">dashboard.cloud.patrowl.io</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
-  "property1": null,
-  "property2": null
+  "organization": 0,
+  "suborganization": "string",
+  "file": "http://example.com"
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -13885,7 +13889,7 @@ curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth
   <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">Token 1234567890abcefghijklmnopqrstuvwxyz12345</span><span class="dl">'</span>
 <span class="p">};</span>
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://dashboard.cloud.patrowl.io/api/auth/assets/import?org_id=0</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://dashboard.cloud.patrowl.io/api/auth/assets/import</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">{</span>
   <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">body</span><span class="p">:</span> <span class="nx">inputBody</span><span class="p">,</span>
@@ -13908,8 +13912,7 @@ curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth
 
 <span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://dashboard.cloud.patrowl.io/api/auth/assets/import'</span><span class="p">,</span>
   <span class="ss">params: </span><span class="p">{</span>
-  <span class="s1">'org_id'</span> <span class="o">=&gt;</span> <span class="s1">'integer'</span>
-<span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
+  <span class="p">},</span> <span class="ss">headers: </span><span class="n">headers</span>
 
 <span class="nb">p</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
@@ -13920,9 +13923,7 @@ curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 1234567890abcefghijklmnopqrstuvwxyz12345'</span>
 <span class="p">}</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://dashboard.cloud.patrowl.io/api/auth/assets/import'</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-  <span class="s">'org_id'</span><span class="p">:</span> <span class="s">'0'</span>
-<span class="p">},</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://dashboard.cloud.patrowl.io/api/auth/assets/import'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
 
@@ -13956,7 +13957,7 @@ curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth
 
  <span class="c1">// ...</span>
 
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://dashboard.cloud.patrowl.io/api/auth/assets/import?org_id=0"</span><span class="o">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://dashboard.cloud.patrowl.io/api/auth/assets/import"</span><span class="o">);</span>
 <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
@@ -13997,31 +13998,19 @@ curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth
 </code></pre></div>
 <p><code>POST /api/auth/assets/import</code></p>
 
-<p>Import Assets from CSV</p>
-
-<p>:param data: The csv file</p>
-
-<p>:return: 400: You need to specify an org_id</p>
-
-<p>:return: 403: User doesn&#39;t have access to this organization</p>
-
-<p>:return: 400: The file needs to be csv</p>
-
-<p>:return: 400: Invalid CSV</p>
-
-<p>:return: 400: Invalid value for an asset</p>
-
-<p>:return: 200: Success</p>
+<p>API endpoint that allows Assets to be viewed or edited.</p>
 
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"property1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"property2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="pi">?</span> <span class="s">property1</span>
-<span class="pi">?</span> <span class="s">property2</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">organization</span><span class="pi">:</span> <span class="m">0</span>
+<span class="na">suborganization</span><span class="pi">:</span> <span class="s">string</span>
+<span class="na">file</span><span class="pi">:</span> <span class="s">http://example.com</span>
 
 </code></pre></div>
 <h3 id="assets_import_assets_from_csv-parameters">Parameters</h3>
@@ -14036,24 +14025,10 @@ curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth
 </tr>
 </thead><tbody>
 <tr>
-<td>org_id</td>
-<td>query</td>
-<td>integer</td>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaimportcsvasset">ImportCSVAsset</a></td>
 <td>true</td>
-<td>Organization</td>
-</tr>
-<tr>
-<td>body</td>
-<td>body</td>
-<td>object</td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>» <strong>additionalProperties</strong></td>
-<td>body</td>
-<td>any</td>
-<td>false</td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -14082,18 +14057,6 @@ curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>none</td>
 <td><a href="#schemabasicresponse">BasicResponse</a></td>
-</tr>
-<tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>none</td>
-<td><a href="#schemabasicresponsewithmessage">BasicResponseWithMessage</a></td>
-</tr>
-<tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>none</td>
-<td><a href="#schemabasicresponsewithmessage">BasicResponseWithMessage</a></td>
 </tr>
 </tbody></table>
 
@@ -27276,17 +27239,9 @@ curl <span class="nt">-X</span> POST https://dashboard.cloud.patrowl.io/api/auth
 
 <p>Import Assets from CSV</p>
 
-<p>:param data: The csv file</p>
-
-<p>:return: 400: You need to specify an org_id</p>
-
-<p>:return: 403: User doesn&#39;t have access to this organization</p>
-
-<p>:return: 400: The file needs to be csv</p>
+<p>:param file: The csv file</p>
 
 <p>:return: 400: Invalid CSV</p>
-
-<p>:return: 400: Invalid value for an asset</p>
 
 <p>:return: 200: Success</p>
 
@@ -44121,6 +44076,51 @@ To perform this operation, you must be authenticated
 </tr>
 </tbody></table>
 
+<h2 id="tocS_ImportCSVAsset">ImportCSVAsset</h2>
+
+<p><a id="schemaimportcsvasset"></a>
+<a id="schema_ImportCSVAsset"></a>
+<a id="tocSimportcsvasset"></a>
+<a id="tocsimportcsvasset"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"organization"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"suborganization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-29'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>organization</td>
+<td>integer</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>suborganization</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>file</td>
+<td>string(uri)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_LevelEnum">LevelEnum</h2>
 
 <p><a id="schemalevelenum"></a>
@@ -44129,7 +44129,7 @@ To perform this operation, you must be authenticated
 <a id="tocslevelenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"Information"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-29'>Properties</h3>
+</span></code></pre></div><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44188,7 +44188,7 @@ To perform this operation, you must be authenticated
 <a id="tocslivenessenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"unknown"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-30'>Properties</h3>
+</span></code></pre></div><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44264,7 +44264,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-31'>Properties</h3>
+</span></code></pre></div><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44341,7 +44341,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-32'>Properties</h3>
+</span></code></pre></div><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44400,7 +44400,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-33'>Properties</h3>
+</span></code></pre></div><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44472,7 +44472,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-34'>Properties</h3>
+</span></code></pre></div><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44550,7 +44550,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-35'>Properties</h3>
+</span></code></pre></div><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44613,7 +44613,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-36'>Properties</h3>
+</span></code></pre></div><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44731,7 +44731,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-37'>Properties</h3>
+</span></code></pre></div><h3 id='properties-38'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44795,7 +44795,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-38'>Properties</h3>
+</span></code></pre></div><h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44875,7 +44875,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-39'>Properties</h3>
+</span></code></pre></div><h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -44972,7 +44972,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-40'>Properties</h3>
+</span></code></pre></div><h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45044,7 +45044,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-41'>Properties</h3>
+</span></code></pre></div><h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45132,7 +45132,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-42'>Properties</h3>
+</span></code></pre></div><h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45197,7 +45197,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-43'>Properties</h3>
+</span></code></pre></div><h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45261,7 +45261,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-44'>Properties</h3>
+</span></code></pre></div><h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45341,7 +45341,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-45'>Properties</h3>
+</span></code></pre></div><h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45435,7 +45435,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-46'>Properties</h3>
+</span></code></pre></div><h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45523,7 +45523,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Asset DRF Serializer definition.</p>
-<h3 id='properties-47'>Properties</h3>
+<h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45784,7 +45784,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>AssetGroup DRF Serializer definition.</p>
-<h3 id='properties-48'>Properties</h3>
+<h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45915,7 +45915,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>AssetTag DRF Serializer definition.</p>
-<h3 id='properties-49'>Properties</h3>
+<h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -45966,7 +45966,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>CybelangelConfig serializer definition</p>
-<h3 id='properties-50'>Properties</h3>
+<h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46054,7 +46054,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Pentest endpoint.</p>
-<h3 id='properties-51'>Properties</h3>
+<h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46261,7 +46261,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-52'>Properties</h3>
+<h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46643,7 +46643,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-53'>Properties</h3>
+</span></code></pre></div><h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46683,7 +46683,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"is_monitored"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-54'>Properties</h3>
+</span></code></pre></div><h3 id='properties-55'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46743,7 +46743,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Pentest endpoint.</p>
-<h3 id='properties-55'>Properties</h3>
+<h3 id='properties-56'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -46910,7 +46910,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Port endpoint.</p>
-<h3 id='properties-56'>Properties</h3>
+<h3 id='properties-57'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47017,7 +47017,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite serializer for Port endpoint.</p>
-<h3 id='properties-57'>Properties</h3>
+<h3 id='properties-58'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47086,7 +47086,7 @@ To perform this operation, you must be authenticated
 <a id="tocsprotocolenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"tcp"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-58'>Properties</h3>
+</span></code></pre></div><h3 id='properties-59'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47141,7 +47141,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Retest endpoint.</p>
-<h3 id='properties-59'>Properties</h3>
+<h3 id='properties-60'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47224,7 +47224,7 @@ To perform this operation, you must be authenticated
 <a id="tocsreteststatusenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"none"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-60'>Properties</h3>
+</span></code></pre></div><h3 id='properties-61'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47287,7 +47287,7 @@ To perform this operation, you must be authenticated
 <a id="tocsseverityenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mi">0</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-61'>Properties</h3>
+</span></code></pre></div><h3 id='properties-62'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47342,7 +47342,7 @@ To perform this operation, you must be authenticated
 <a id="tocssolutioneffortenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"low"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-62'>Properties</h3>
+</span></code></pre></div><h3 id='properties-63'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47389,7 +47389,7 @@ To perform this operation, you must be authenticated
 <a id="tocssolutionpriorityenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"urgent"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-63'>Properties</h3>
+</span></code></pre></div><h3 id='properties-64'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47436,7 +47436,7 @@ To perform this operation, you must be authenticated
 <a id="tocsstateenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"open"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-64'>Properties</h3>
+</span></code></pre></div><h3 id='properties-65'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47487,7 +47487,7 @@ To perform this operation, you must be authenticated
 <a id="tocsstatus0cbenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"new"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-65'>Properties</h3>
+</span></code></pre></div><h3 id='properties-66'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47564,7 +47564,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-66'>Properties</h3>
+</span></code></pre></div><h3 id='properties-67'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47602,7 +47602,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Ticket endpoint.</p>
-<h3 id='properties-67'>Properties</h3>
+<h3 id='properties-68'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47678,7 +47678,7 @@ To perform this operation, you must be authenticated
 <a id="tocsticketstatusenum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="mi">0</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-68'>Properties</h3>
+</span></code></pre></div><h3 id='properties-69'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47741,7 +47741,7 @@ To perform this operation, you must be authenticated
 <a id="tocstypedd0enum"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"ip"</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-69'>Properties</h3>
+</span></code></pre></div><h3 id='properties-70'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -47879,7 +47879,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-70'>Properties</h3>
+<h3 id='properties-71'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48283,7 +48283,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for Vulnerability endpoint.</p>
-<h3 id='properties-71'>Properties</h3>
+<h3 id='properties-72'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48474,7 +48474,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-72'>Properties</h3>
+</span></code></pre></div><h3 id='properties-73'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48525,7 +48525,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite serializer for Port endpoint.</p>
-<h3 id='properties-73'>Properties</h3>
+<h3 id='properties-74'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48635,7 +48635,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Serializer for WebServer endpoint.</p>
-<h3 id='properties-74'>Properties</h3>
+<h3 id='properties-75'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48795,7 +48795,7 @@ To perform this operation, you must be authenticated
 
 </span></code></pre></div>
 <p>Lite Serializer for WebServer endpoint.</p>
-<h3 id='properties-75'>Properties</h3>
+<h3 id='properties-76'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48847,7 +48847,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-76'>Properties</h3>
+</span></code></pre></div><h3 id='properties-77'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48878,7 +48878,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-77'>Properties</h3>
+</span></code></pre></div><h3 id='properties-78'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48907,7 +48907,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-78'>Properties</h3>
+</span></code></pre></div><h3 id='properties-79'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48938,7 +48938,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-79'>Properties</h3>
+</span></code></pre></div><h3 id='properties-80'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -48972,7 +48972,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"exposure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-80'>Properties</h3>
+</span></code></pre></div><h3 id='properties-81'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -49041,7 +49041,7 @@ To perform this operation, you must be authenticated
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-81'>Properties</h3>
+</span></code></pre></div><h3 id='properties-82'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -49077,7 +49077,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-82'>Properties</h3>
+</span></code></pre></div><h3 id='properties-83'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -49107,7 +49107,7 @@ To perform this operation, you must be authenticated
   </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-83'>Properties</h3>
+</span></code></pre></div><h3 id='properties-84'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
